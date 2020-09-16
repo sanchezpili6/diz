@@ -1,5 +1,5 @@
 # diz
 
-Retail store app
+Retail store mobile app
 
 
