@@ -1,4 +1,5 @@
 import 'package:diz/login/login_screen.dart';
+import 'package:diz/home/main_page.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -16,10 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'Diz',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: Colors.white,
       ),
       //home: WelcomeScreen(),
-      home: LoginScreen(),
+      home: MainPage(),
     );
   }
 }
