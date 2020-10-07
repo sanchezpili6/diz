@@ -4,6 +4,7 @@ import 'package:diz/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
+
 void main() {
   runApp(MyApp());
 }

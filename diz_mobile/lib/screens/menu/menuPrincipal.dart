@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:diz/screens/menu/department.dart';
-//import 'package:hexcolor/hexcolor.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
