@@ -7,3 +7,4 @@ const cRopa = Color(0xFF8c004b);
 const cLibreria = Color(0xFFF2AA4C);
 const cBlancosMuebles = Colors.white;
 const cVinosLicores = Color(0xFFE94B3C);
+const deffaultPad = 20.0;
