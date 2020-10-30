@@ -1,7 +1,6 @@
-import 'package:diz/constants.dart';
+import 'package:diz/signup/body2.dart';
 import 'package:flutter/material.dart';
 import 'background.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -19,13 +18,12 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 width: size.width * 0.8,
                 decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
                   borderRadius: BorderRadius.circular(29),
                 ),
                 child: TextField(
                   cursorColor: Colors.white,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle, color: kPrimaryColor),
+                    icon: Icon(Icons.account_circle, color:Colors.blue),
                     hintText: "NOMBRE",
                     hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
                   ),
@@ -36,13 +34,12 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 width: size.width * 0.8,
                 decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
                   borderRadius: BorderRadius.circular(29),
                 ),
                 child: TextField(
                   cursorColor: Colors.white,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle, color: kPrimaryColor),
+                    icon: Icon(Icons.account_circle, color:Colors.blue),
                     hintText: "APELLIDO PATERNO",
                     hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
                   ),
@@ -53,13 +50,12 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 width: size.width * 0.8,
                 decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
                   borderRadius: BorderRadius.circular(29),
                 ),
                 child: TextField(
                   cursorColor: Colors.white,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle, color: kPrimaryColor),
+                    icon: Icon(Icons.account_circle, color:Colors.blue),
                     hintText: "APELLIDO MATERNO",
                     hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
                   ),
@@ -70,7 +66,6 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 width: size.width * 0.8,
                 decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
                   borderRadius: BorderRadius.circular(29),
                 ),
                 child: InputDatePickerFormField(
@@ -79,61 +74,7 @@ class Body extends StatelessWidget {
                     lastDate: DateTime(2002)
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                width: size.width * 0.8,
-                decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
-                  borderRadius: BorderRadius.circular(29),
-                ),
-                child: TextField(
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle, color: kPrimaryColor),
-                    hintText: "GÉNERO",
-                    hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
-                  ),
-                ),
-              ),
 
-
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                width: size.width * 0.8,
-                decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
-                  borderRadius: BorderRadius.circular(29),
-                ),
-                child: TextField(
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle, color: kPrimaryColor),
-                    hintText: "TELEFONO",
-                    hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
-                  ),
-                ),
-              ),
-
-
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                width: size.width * 0.8,
-                decoration: BoxDecoration(
-                  color: kPrimaryLightColor,
-                  borderRadius: BorderRadius.circular(29),
-                ),
-                child: TextField(
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle, color: kPrimaryColor),
-                    hintText: "CONTRASEÑA",
-                    hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
-                  ),
-                ),
-              ),
               //REGISTRO
               Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -142,10 +83,21 @@ class Body extends StatelessWidget {
                   borderRadius: BorderRadius.circular(29),
                   child: FlatButton(
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                    color: Colors.purpleAccent,
-                    onPressed: () {},
+                    color: Colors.blue,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Body2();
+                          },
+                        ),
+                      );
+
+
+                    },
                     child: Text(
-                      "REGISTRARSE",
+                      "SIGUIENTE",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                           color: Colors.white,

@@ -1,6 +1,4 @@
-import 'package:diz/login/login_screen.dart';
 import 'package:diz/home/main_page.dart';
-import 'package:diz/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 

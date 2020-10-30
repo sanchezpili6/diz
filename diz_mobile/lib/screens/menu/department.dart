@@ -13,9 +13,9 @@ class Department extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           department.data,
-          style: TextStyle(color: bckColour),
+          style: TextStyle(color: colour),
         ),
-        backgroundColor: colour,
+        backgroundColor: bckColour,
       ),
       body: Center(
           child: Row(
@@ -31,7 +31,7 @@ class Department extends StatelessWidget {
                           "Bienvenido(a) al departamento de " + department.data,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: colour,
+                            color: colour == Color(0xFFFFFFFF)? Colors.black: colour,
                             fontSize: 22.0,
                           ),
                           textAlign: TextAlign.center,

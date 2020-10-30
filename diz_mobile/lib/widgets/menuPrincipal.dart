@@ -11,14 +11,13 @@ class NavDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             child: Text(
-              'Diz',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+              '',
+              style: TextStyle(color: Colors.grey, fontSize: 25),
             ),
             decoration: BoxDecoration(
               color: Colors.black,
-              /*image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/cover.jpg'))*/
+              image: DecorationImage(
+                    image: AssetImage('assets/images/dizblack.png')),
             ),
           ),
           ListTile(
@@ -50,8 +49,8 @@ class NavDrawer extends StatelessWidget {
               DepartmentWidget(
                 icon: Icon(Icons.event_seat),
                 title: Text("Blancos y muebles"),
-                color: Color(0xFF000000),
-                bckColor: Color(0xFFFFFFFF),
+                color: Color(0xFFFFFFFF),
+                bckColor: Color(0xFF000000),
               ),
               DepartmentWidget(
                 icon: Icon(Icons.face),

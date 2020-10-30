@@ -1,8 +1,6 @@
-import 'package:diz/constants.dart';
 import 'package:diz/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'background.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:diz/login/login_screen.dart';
 import 'package:diz/widgets/rounded_button.dart';
 
@@ -17,17 +15,18 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "BIENVENIDO(A) A DIZ",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+
             SizedBox(height: size.height * 0.05),
-            SvgPicture.asset(
-              "assets/icons/chat.svg",
+
+            Image(
               height: size.height * 0.45,
+              image: AssetImage(
+              'assets/images/diz.png'
+            ),
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
+              color: Colors.blue,
               text: "INICIAR SESIÓN",
               press: () {
                 Navigator.push(
@@ -42,8 +41,8 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "REGÍSTRATE",
-              color: kPrimaryLightColor,
-              textColor: Colors.black,
+              color: Colors.white,
+              textColor: Colors.blue,
               press: () {
                 Navigator.push(
                   context,

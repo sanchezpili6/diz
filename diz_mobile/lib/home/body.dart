@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:diz/Products/product.dart';
-import 'package:diz/Products/details_screen.dart';
 
 class Body extends StatelessWidget {
   @override

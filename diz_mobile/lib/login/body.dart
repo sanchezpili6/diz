@@ -1,7 +1,6 @@
-import 'package:diz/constants.dart';
+import 'package:diz/home/main_page.dart';
 import 'package:flutter/material.dart';
 import 'background.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget{
   @override
@@ -19,24 +18,23 @@ class Body extends StatelessWidget{
               fontSize: 25,
             ),
           ),
-          SvgPicture.asset(
+          /*SvgPicture.asset(
             "assets/icons/login.svg",
             height: size.height * 0.42,
-          ),
+          ),*/
           SizedBox(height: size.height *0.03),
           Container(
             margin: EdgeInsets.symmetric(vertical: 10),
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             width: size.width * 0.8,
             decoration: BoxDecoration(
-              color: kPrimaryLightColor,
               borderRadius: BorderRadius.circular(29),
             ),
             child: TextField(
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 icon: Icon(Icons.account_circle,
-                color: kPrimaryColor),
+                color: Colors.blue),
                 hintText: "TU CORREO",
               ),
 
@@ -47,14 +45,13 @@ class Body extends StatelessWidget{
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             width: size.width * 0.8,
             decoration: BoxDecoration(
-              color: kPrimaryLightColor,
               borderRadius: BorderRadius.circular(29),
             ),
             child: TextField(
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 icon: Icon(Icons.lock,
-                    color: kPrimaryColor),
+                    color: Colors.blue),
                 hintText: "CONTRASEÑA",
               ),
 
@@ -67,12 +64,21 @@ class Body extends StatelessWidget{
               borderRadius: BorderRadius.circular(29),
               child: FlatButton(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                color: Colors.purpleAccent,
-                onPressed: (){},
-                child: Text("LOGIN",
+                color: Colors.blue,
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MainPage();
+                      },
+                    ),
+                  );
+                },
+                child: Text("INICIAR SESIÓN",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
+                  color: Colors.white,
                   fontSize: 20,
                 ),),
               ),
