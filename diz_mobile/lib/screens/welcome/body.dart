@@ -1,57 +1,62 @@
 import 'package:diz/constants.dart';
 import 'package:flutter/material.dart';
+import '../../login/login_screen.dart';
 import 'background.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:diz/login/login_screen.dart';
+import 'package:diz/widgets/rounded_button.dart';
 
-class Body extends StatelessWidget{
+
+class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    // This size provide us total height and width of our screen
     return Background(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            child: Text(
-                "YOU WILL LOVE DIZ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "WELCOME TO EDU",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
-          SvgPicture.asset(
-            "assets/icons/chat.svg",
-            height: size.height * 0.42,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            width: size.width * 0.8,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(29),
-              child: FlatButton(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                color: kPrimaryLightColor,
-                onPressed: (){},
-                child: Text("LOGIN"),
-              ),
+            SizedBox(height: size.height * 0.05),
+            SvgPicture.asset(
+              "assets/icons/chat.svg",
+              height: size.height * 0.45,
             ),
-          ),
-          Container(
-            width: size.width * 0.8,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(29),
-              child: FlatButton(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                color: Colors.purpleAccent[200],
-                onPressed: (){},
-                child: Text("SIGN UP"),
-              ),
+            SizedBox(height: size.height * 0.05),
+            RoundedButton(
+              text: "LOGIN",
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
+              },
             ),
-          ),
-        ],
+            RoundedButton(
+              text: "SIGN UP",
+              color: kPrimaryLightColor,
+              textColor: Colors.black,
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      //return SignUpScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:diz/constants.dart';
 
 class Product {
-  final String image, title, description, category;
+  final String image, title, description, department;
   final int price, size, id;
   final Color color;
   Product({
@@ -11,7 +11,7 @@ class Product {
     this.title,
     this.price,
     this.description,
-    this.category,
+    this.department,
     this.size,
     this.color,
   });
@@ -24,7 +24,7 @@ List<Product> products = [
       price: 12,
       size: 12,
       description: dummyText,
-      category: "Ropa",
+      department: "Ropa",
       image: "assets/images/chamarra.png",
       color: cRopa),
   Product(
@@ -33,7 +33,7 @@ List<Product> products = [
       price: 234,
       size: 8,
       description: dummyText,
-      category: "Librería",
+      department: "Librería",
       image: "assets/images/jane_eyre.png",
       color: cLibreria),
   Product(
@@ -42,7 +42,7 @@ List<Product> products = [
       price: 200,
       size: 10,
       description: dummyText,
-      category: "Vinos y Licores",
+      department: "Vinos y Licores",
       image: "assets/images/vino.png",
       color: cVinosLicores),
   Product(
@@ -51,7 +51,16 @@ List<Product> products = [
       price: 2340,
       size: 11,
       description: dummyText,
-      category: "Videojuegos",
+      department: "Videojuegos",
+      image: "assets/images/xbox_one.png",
+      color: cVideojuegos),
+  Product(
+      id: 4,
+      title: "Xbox One",
+      price: 2340,
+      size: 11,
+      description: dummyText,
+      department: "Videojuegos",
       image: "assets/images/xbox_one.png",
       color: cVideojuegos),
 ];

@@ -19,6 +19,7 @@ class Department extends StatelessWidget {
       ),
       body: Center(
           child: Row(
+<<<<<<< HEAD
             children: [
               Expanded(
                 child: Column(
@@ -43,6 +44,32 @@ class Department extends StatelessWidget {
               ),
             ],
           )),
+=======
+          children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: Padding(
+                    padding: EdgeInsets.all(25.0),
+                    child: Text(
+                      "Bienvenido(a) al departamento de " + department.data,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: colour,
+                        fontSize: 22.0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      )),
+>>>>>>> origin/master
     );
   }
 }
