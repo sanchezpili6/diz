@@ -1,6 +1,6 @@
 import 'package:diz/constants.dart';
+import 'package:diz/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
-import '../../login/login_screen.dart';
 import 'background.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:diz/login/login_screen.dart';
@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "WELCOME TO EDU",
+              "BIENVENIDO(A) A DIZ",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: size.height * 0.05),
@@ -28,7 +28,7 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
-              text: "LOGIN",
+              text: "INICIAR SESIÓN",
               press: () {
                 Navigator.push(
                   context,
@@ -41,7 +41,7 @@ class Body extends StatelessWidget {
               },
             ),
             RoundedButton(
-              text: "SIGN UP",
+              text: "REGÍSTRATE",
               color: kPrimaryLightColor,
               textColor: Colors.black,
               press: () {
@@ -49,7 +49,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      //return SignUpScreen();
+                      return SignUpScreen();
                     },
                   ),
                 );
