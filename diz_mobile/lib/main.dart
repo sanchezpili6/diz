@@ -1,3 +1,4 @@
+import 'package:diz/Products/details_screen.dart';
 import 'package:diz/home/main_page.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      //home: WelcomeScreen(),
+      //home:ProductScreen(),
       home: MainPage(),
     );
   }

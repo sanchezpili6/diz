@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:diz/constants.dart';
+import 'package:diz/Products/product.dart';
 
 class Product {
   final String image, title, description, department;

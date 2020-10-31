@@ -1,5 +1,7 @@
+import 'package:diz/Products/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/Products/product.dart';
+import 'package:diz/Products/body.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -48,31 +50,31 @@ class ItemCard extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          height: 180,
-          width: 160,
-          decoration: BoxDecoration(
-            color: product.color,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Image.asset(product.image),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
-          child: Text(
-            product.title,
-            style: TextStyle(color: Colors.black54),
-          ),
-        ),
-        Text(
-          "\$${product.price}",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ],
-    );
+   return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: 180,
+              width: 160,
+              decoration: BoxDecoration(
+                color: product.color,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Image.asset(product.image),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Text(
+                product.title,
+                style: TextStyle(color: Colors.black54),
+              ),
+            ),
+            Text(
+              "\$${product.price}",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        );
   }
 }
 

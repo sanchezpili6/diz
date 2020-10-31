@@ -1,8 +1,23 @@
 import 'package:diz/home/main_page.dart';
 import 'package:flutter/material.dart';
 import 'background.dart';
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
 
-class Body extends StatelessWidget{
+class _BodyState extends State<Body> {
+  String mail='';
+  String password='';
+  onChangedMail(String newText){
+    mail = newText;
+    print(mail);
+  }
+  onChangedPassword(String newText){
+    password = newText;
+    print(password);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -11,7 +26,7 @@ class Body extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "LOGIN",
+            "    LOGIN",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -31,11 +46,12 @@ class Body extends StatelessWidget{
               borderRadius: BorderRadius.circular(29),
             ),
             child: TextField(
+              onChanged: onChangedMail,
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 icon: Icon(Icons.account_circle,
-                color: Colors.blue),
-                hintText: "TU CORREO",
+                    color: Colors.blue),
+                hintText: "   CORREO",
               ),
 
             ),
@@ -48,11 +64,13 @@ class Body extends StatelessWidget{
               borderRadius: BorderRadius.circular(29),
             ),
             child: TextField(
+              onChanged: onChangedPassword,
+              obscureText: true,
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 icon: Icon(Icons.lock,
                     color: Colors.blue),
-                hintText: "CONTRASEÑA",
+                hintText: "  CONTRASEÑA",
               ),
 
             ),
@@ -66,21 +84,42 @@ class Body extends StatelessWidget{
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                 color: Colors.blue,
                 onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MainPage();
-                      },
-                    ),
-                  );
+                  if(mail=='jacky@gmail.com' && password=='jacky')
+                    {
+                      print('entra');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MainPage();
+                          },
+                        ),
+                      );
+                    }
+                  else{
+                    showDialog(
+                        context: context,
+                        builder: (buildcontext) {
+                          return AlertDialog(
+                            title: Text("ERROR"),
+                            content: Text("Usuario o contraseña incorrectos"),
+                            actions: <Widget>[
+                              RaisedButton(
+                                child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                onPressed: (){ Navigator.of(context).pop(); },
+                              )
+                            ],
+                          );
+                        }
+                    );
+                  }
                 },
                 child: Text("INICIAR SESIÓN",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 20,
-                ),),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),),
               ),
             ),
           ),

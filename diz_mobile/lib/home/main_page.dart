@@ -1,6 +1,8 @@
-import 'package:diz/widgets/menuPrincipal.dart';
 import 'package:flutter/material.dart';
+import 'package:diz/constants.dart';
 import 'package:diz/home/body.dart';
+import 'package:diz/widgets/menuPrincipal.dart';
+import 'package:diz/Products/details_screen.dart';
 
 class MainPage extends StatelessWidget {
   @override
