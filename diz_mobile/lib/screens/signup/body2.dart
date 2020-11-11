@@ -1,9 +1,16 @@
-import 'package:diz/home/main_page.dart';
+import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/widgets/commonFieldWidget.dart';
 import 'package:flutter/material.dart';
-import 'background.dart';
+import 'package:diz/widgets/background.dart';
 
-class Body2 extends StatelessWidget {
+class Body2 extends StatefulWidget {
+  @override
+  _Body2State createState() => _Body2State();
+}
+
+class _Body2State extends State<Body2> {
   String dropdownValue='F';
+  String selectedGender='';
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -15,47 +22,45 @@ class Body2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: size.height * 0.02),
-
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   width: size.width * 0.8,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(29),
-                  ),
                   child:  Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(flex: 4,child: TextField(
-                          cursorColor: Colors.white,
-                          decoration: InputDecoration(
-                            icon: Icon(Icons.account_circle, color: Colors.blue),
-                            hintText: dropdownValue,
-                            hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
-                          ),
-                        ),),
-                        Expanded(
-                          flex: 1,
-                          child: DropdownButton<String>(
-                            underline: Container(
-                              height: 2,
-                              color: Colors.deepPurpleAccent,
+                      child: Row(
+                        children: [
+                          Expanded(flex: 4,child:
+                          TextField(
+                            enabled: false,
+                            cursorColor: Colors.white,
+                            decoration: InputDecoration(
+                              hintText: dropdownValue,
+                              hintStyle: TextStyle(fontSize: 13, color: Colors.grey,),
                             ),
-                            style: TextStyle(color: Colors.deepPurple,),
-                            onChanged: (String newValue) {
-                              dropdownValue = newValue;
-                            },
-                            items: <String>['F', 'M']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                          ),),
+                          Expanded(
+                            flex: 1,
+                            child: DropdownButton<String>(
+                              underline: Container(
+                                height: 1,
+                              ),
+                              style: TextStyle(color: Colors.deepPurple,),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  dropdownValue = newValue;
+                                });
+                              },
+                              items: <String>['F', 'M']
+                                  .map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
                           ),
-                        ),
-                      ],
-                    )
+                        ],
+                      )
                   ),
                 ),
 
@@ -67,14 +72,7 @@ class Body2 extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: TextField(
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.account_circle, color: Colors.blue),
-                      hintText: "TELEFONO",
-                      hintStyle: TextStyle(fontSize: 13, color: Colors.grey),
-                    ),
-                  ),
+                  child:commonFieldWidget(hintText: 'TELÉFONO',),
                 ),
 
 
@@ -85,15 +83,7 @@ class Body2 extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: TextField(
-                    obscureText: true,
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.account_circle, color: Colors.blue),
-                      hintText: "CONTRASEÑA",
-                      hintStyle: TextStyle(fontSize: 13, color: Colors.grey,),
-                    ),
-                  ),
+                  child: commonFieldWidget(hintText: 'CONTRASEÑA',),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -102,15 +92,7 @@ class Body2 extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: TextField(
-                    obscureText: true,
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.account_circle, color: Colors.blue),
-                      hintText: "CONFIRMAR CONTRASEÑA",
-                      hintStyle: TextStyle(fontSize: 13, color: Colors.grey,),
-                    ),
-                  ),
+                  child: commonFieldWidget(hintText: 'CONFIRMAR CONTRASEÑA',),
                 ),
                 //REGISTRO
                 Container(
@@ -150,3 +132,6 @@ class Body2 extends StatelessWidget {
     );
   }
 }
+
+
+

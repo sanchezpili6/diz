@@ -1,5 +1,5 @@
+import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
-import 'package:diz/Products/product.dart';
 
 void main(){
   runApp(
@@ -10,59 +10,54 @@ void main(){
   );
 }
 
-/*class ProductDetails extends StatefulWidget{
+class ProductDetails extends StatefulWidget{
   final product_detail_name;
   final product_detail_img;
   final product_detail_price;
-  final Product product;
 
   ProductDetails({
     this.product_detail_name,
     this.product_detail_img,
-    this.product_detail_price,
-    this.product
+    this.product_detail_price
   });
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
-}*/
+}
 
-class ProductDetails extends StatelessWidget{
-  final Product product;
-  const ProductDetails({Key key, this.product}) : super(key: key);
+class _ProductDetailsState extends State<ProductDetails>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Colors.white,
-          title: Text('Diz'),
+        drawer: NavDrawer(),
+        appBar: AppBar(
+          backgroundColor: Colors.black87,
+          elevation: 0,
           actions: <Widget>[
-            new IconButton(icon: Icon(Icons.shopping_cart, color: Colors.white,), onPressed: (){})
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: (){},
+            ),
+            IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: (){},
+            ),
           ],
         ),
-
-        drawer: new Drawer(
-            child: new ListView(
-                children: <Widget>[
-
-                ]
-            )
-        ),
-
-        body: new ListView(
+        body:ListView(
           children: <Widget>[
-            new Container(
+             Container(
                 height: 300.0,
                 child: GridTile(
                     child: Container(
-                      child: Image.asset(product.image),
+                      child: Image.asset(widget.product_detail_img),
                     ),
                     footer: new Container(
                         color: Colors.blue,
                         margin: EdgeInsets.symmetric(horizontal:  50.0),
                         child: ListTile(
                             title: new Center(
-                              child: Text(product.title, style: TextStyle(
+                              child: Text(widget.product_detail_name, style: TextStyle(
                                   fontWeight: FontWeight.bold, color: Colors.white )),
                             )
                         )
@@ -74,7 +69,7 @@ class ProductDetails extends StatelessWidget{
 
             new ListTile(
               title: new Center(
-                child: Text(product.price.toString(), style: TextStyle(
+                child: Text(widget.product_detail_price, style: TextStyle(
                     fontSize:25, fontWeight: FontWeight.bold, color: Colors.red),),
               ),
             ),
