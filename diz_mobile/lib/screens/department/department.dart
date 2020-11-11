@@ -1,21 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Department extends StatelessWidget {
+class Department extends StatefulWidget {
+
   final Text department;
   final Color colour;
   final Color bckColour;
   Department({@required this.department, this.colour, this.bckColour});
+  @override
+  _DepartmentState createState() => _DepartmentState();
+}
+
+class _DepartmentState extends State<Department> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          department.data,
-          style: TextStyle(color: bckColour),
+          widget.department.data,
+          style: TextStyle(color: widget.colour),
         ),
-        backgroundColor: colour,
+        backgroundColor: widget.bckColour,
       ),
       body: Center(
           child: Row(
@@ -28,10 +34,10 @@ class Department extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(25.0),
                         child: Text(
-                          "Bienvenido(a) al departamento de " + department.data,
+                          "Bienvenido(a) al departamento de " + widget.department.data,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: colour,
+                            color: widget.colour == Color(0xFFFFFFFF)? Colors.black: widget.colour,
                             fontSize: 22.0,
                           ),
                           textAlign: TextAlign.center,
@@ -46,3 +52,4 @@ class Department extends StatelessWidget {
     );
   }
 }
+

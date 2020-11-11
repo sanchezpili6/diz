@@ -1,5 +1,5 @@
+import 'package:diz/screens/department/department.dart';
 import 'package:flutter/material.dart';
-import 'package:diz/screens/menu/department.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
 
 class NavDrawer extends StatelessWidget {
