@@ -1,6 +1,6 @@
+import 'package:diz/payment_screens/card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 
 void main(){
   runApp(
@@ -21,23 +21,33 @@ class CardScreen extends StatefulWidget{
 
 class CardScreenState extends State<CardScreen>{
 
-  String _name;
-  String _numT;
+  String _titular;
+  String _numeroTarjeta;
+  String _vencimiento;
   String _cv;
-  String _street;
-  String _numCasa;
-  String _colonia;
-  String _ciudad;
-  String _cp;
-  String _estado;
-  String _calles;
 
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey <FormState>();
 
-  Widget _buildNumberT(){
+  Widget _buildNombre(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Número de tarjeta'),
+      decoration: InputDecoration(labelText: 'Titular de la tarjeta'),
+      maxLength: 50,
+      validator: (String value){
+        if(value.isEmpty){
+          return 'Dato requerido';
+        }
+        return null;
+      } ,
+      onSaved: (String value){
+        _titular= value;
+      },
+    );
+  }
+
+  Widget _buildNumero(){
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Numero tarjeta'),
       maxLength: 16,
       keyboardType: TextInputType.phone,
       validator: (String value){
@@ -47,14 +57,31 @@ class CardScreenState extends State<CardScreen>{
         return null;
       } ,
       onSaved: (String value){
-        _numT= value;
+        _numeroTarjeta= value;
+      },
+    );
+  }
+
+  Widget _buildVencimiento(){
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Fecha vencimiento'),
+      maxLength: 5,
+      keyboardType: TextInputType.phone,
+      validator: (String value){
+        if(value.isEmpty){
+          return 'Dato requerido';
+        }
+        return null;
+      } ,
+      onSaved: (String value){
+        _vencimiento= value;
       },
     );
   }
 
   Widget _buildCV(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'CV: '),
+      decoration: InputDecoration(labelText: 'CV'),
       maxLength: 3,
       keyboardType: TextInputType.phone,
       validator: (String value){
@@ -64,136 +91,7 @@ class CardScreenState extends State<CardScreen>{
         return null;
       } ,
       onSaved: (String value){
-        _numT= value;
-      },
-    );
-  }
-
-  Widget _buildName(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Nombre titular tarjeta'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dato requerido';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _name= value;
-      },
-    );
-  }
-
-  Widget _buildStreet(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: Calle'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _street= value;
-      },
-    );
-  }
-
-  Widget _buildNumC(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: No. de casa'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _numCasa= value;
-      },
-    );
-  }
-
-  Widget _buildColonia(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: Colonia'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _colonia= value;
-      },
-    );
-  }
-
-  Widget _buildCiudad(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: Ciudad'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _ciudad= value;
-      },
-    );
-  }
-
-  Widget _buildCP(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: Código postal'),
-      maxLength: 50,
-      keyboardType: TextInputType.phone,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _cp= value;
-      },
-    );
-  }
-
-  Widget _buildEstado(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: Estado'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _estado= value;
-      },
-    );
-  }
-
-  Widget _buildCalles(){
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Dirreción: Calles contiguas'),
-      maxLength: 50,
-      validator: (String value){
-        if(value.isEmpty){
-          return 'Dirección requerida';
-        }
-        return null;
-      } ,
-      onSaved: (String value){
-        _calles= value;
+        _cv= value;
       },
     );
   }
@@ -222,7 +120,6 @@ class CardScreenState extends State<CardScreen>{
             new Padding(padding: const EdgeInsets.all(15.0),
                 child: new Text('Datos de pago', textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
             Container(
-
             ),
             Container(
               margin: EdgeInsets.all(20),
@@ -231,16 +128,13 @@ class CardScreenState extends State<CardScreen>{
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    _buildName(),
-                    _buildNumberT(),
+                    _buildNombre(),
+                    _buildNumero(),
+                    _buildVencimiento(),
                     _buildCV(),
-                    _buildStreet(),
-                    _buildNumC(),
-                    _buildColonia(),
-                    _buildCiudad(),
-                    _buildCP(),
-                    _buildEstado(),
-                    _buildCalles(),
+                    /*CreditCard(//titular: _numeroTarjeta,
+                    //vencimiento: _vencimiento
+                    ),*/
                     SizedBox(height: 100),
                     RaisedButton(
                       child: Text(
@@ -251,7 +145,17 @@ class CardScreenState extends State<CardScreen>{
                         if(!_formKey.currentState.validate()){
                           return;
                         }
-                        _formKey.currentState.save();
+                        else{
+                          _formKey.currentState.save();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return CardPyScreen(numeroT: _numeroTarjeta, venc: _vencimiento);
+                              },
+                            ),
+                          );
+                        }
                       },
                     )
                   ],

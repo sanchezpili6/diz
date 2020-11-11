@@ -1,151 +1,173 @@
-import 'package:diz/payment_screens/entrega.dart';
+import 'package: diz/payment_screens/tarjetas.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 
 void main(){
   runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: FormScreen(),
+        home: EntregaScreen(),
       )
   );
 }
 
-class FormScreen extends StatefulWidget{
-
+class EntregaScreen extends StatefulWidget{
   @override
-  State<StatefulWidget> createState(){
-    return FormScreenState();
-  }
+  /*State<StatefulWidget> createState(){
+    return CardScreenState();
+  }*/
+  EntregaScreenState createState() => EntregaScreenState();
 }
 
-class FormScreenState extends State<FormScreen>{
+class EntregaScreenState extends State<EntregaScreen>{
 
-  String _name;
-  String _lastname;
-  String _birthday;
-  String _mail;
-  String _number;
-  String _gender;
-  String _adress;
-  DateTime _dateTime;
+  String _street;
+  String _numCasa;
+  String _colonia;
+  String _ciudad;
+  String _cp;
+  String _estado;
+  String _calles;
 
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey <FormState>();
 
-  Widget _buildName(){
+  Widget _buildStreet(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Nombre'),
-      maxLength: 20,
+      decoration: InputDecoration(labelText: 'Calle'),
+      maxLength: 50,
       validator: (String value){
         if(value.isEmpty){
-          return 'Nombre requerido';
+          return 'Dirección requerida';
         }
+        return null;
       } ,
       onSaved: (String value){
-        _name= value;
+        _street= value;
       },
     );
   }
 
-  Widget _buildLastName(){
+  Widget _buildNumC(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Apellidos: '),
-      maxLength: 20,
+      decoration: InputDecoration(labelText: 'No. de casa'),
+      maxLength: 50,
       validator: (String value){
         if(value.isEmpty){
-          return 'Apellido requerido';
+          return 'Dirección requerida';
         }
+        return null;
       } ,
       onSaved: (String value){
-        _lastname= value;
+        _numCasa= value;
       },
     );
   }
 
-  Widget _buildBirthday(){
-    /*return RaisedButton(
-      child: Text('Fecha'),
-      onPressed: (){
-        showDatePicker(context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2000),
-            lastDate: DateTime(2020)
-        ).then((date){
-          setState(() {
-            _dateTime= date;
-          });
-        });
-      },
-    );*/
+  Widget _buildColonia(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Fecha Nacimiento'),
-
+      decoration: InputDecoration(labelText: 'Colonia'),
+      maxLength: 50,
       validator: (String value){
         if(value.isEmpty){
-          return 'Dato requerido';
+          return 'Dirección requerida';
         }
+        return null;
       } ,
       onSaved: (String value){
-        _birthday = value;
+        _colonia= value;
       },
     );
   }
 
-  Widget _buildMail(){
+  Widget _buildCiudad(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Correo'),
-      maxLength: 20,
+      decoration: InputDecoration(labelText: 'Ciudad'),
+      maxLength: 50,
       validator: (String value){
         if(value.isEmpty){
-          return 'Correo requerido';
+          return 'Dirección requerida';
         }
-        if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-          return 'Correo invalido';
-        }
+        return null;
       } ,
       onSaved: (String value){
-        _mail = value;
+        _ciudad= value;
       },
     );
   }
 
-  Widget _buildNumber(){
+  Widget _buildCP(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Numero telefonico'),
+      decoration: InputDecoration(labelText: 'Código postal'),
+      maxLength: 50,
       keyboardType: TextInputType.phone,
       validator: (String value){
         if(value.isEmpty){
-          return 'Dato requerido';
+          return 'Dirección requerida';
         }
+        return null;
       } ,
       onSaved: (String value){
-        _number= value;
+        _cp= value;
       },
     );
   }
 
-  Widget _buildGender(){
+  Widget _buildEstado(){
     return DropdownButtonFormField(
-      decoration: InputDecoration(labelText: 'Género'),
-      value: _gender,
+      decoration: InputDecoration(labelText: 'Estado'),
+      value: _estado,
       items: [
         DropdownMenuItem(
-          child: Text("Masculino"),
+          child: Text("Aguascalientes"),
           value: 1,
         ),
         DropdownMenuItem(
-          child: Text("Femenino"),
+          child: Text("Baja California"),
           value: 2,
         ),
         DropdownMenuItem(
-          child: Text("Otro"),
+          child: Text("Baja California Sur"),
           value: 3,
+        ),
+        DropdownMenuItem(
+          child: Text("Campeche"),
+          value: 4,
+        ),
+        DropdownMenuItem(
+          child: Text("Chiapas"),
+          value: 5,
+        ),
+        DropdownMenuItem(
+          child: Text("Chihuaha"),
+          value: 6,
+        ),
+        DropdownMenuItem(
+          child: Text("Ciudad de México"),
+          value: 7,
         ),
       ],
       onChanged: (value) {
         setState(() {
-          _gender = value;
+          _estado = value;
         });
+      },
+    );
+  }
+
+  Widget _buildCalles(){
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Calles contiguas'),
+      maxLength: 50,
+      validator: (String value){
+        if(value.isEmpty){
+          return 'Dirección requerida';
+        }
+        return null;
+      } ,
+      onSaved: (String value){
+        _calles= value;
       },
     );
   }
@@ -172,8 +194,10 @@ class FormScreenState extends State<FormScreen>{
         body: new ListView(
           children: <Widget>[
             new Padding(padding: const EdgeInsets.all(15.0),
-                child: new Text('Datos de compra', textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
+                child: new Text('Dirección de entrega', textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
+            Container(
 
+            ),
             Container(
               margin: EdgeInsets.all(20),
               child: Form(
@@ -181,16 +205,17 @@ class FormScreenState extends State<FormScreen>{
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    _buildName(),
-                    _buildLastName(),
-                    _buildGender(),
-                    _buildBirthday(),
-                    _buildMail(),
-                    _buildNumber(),
+                    _buildStreet(),
+                    _buildNumC(),
+                    _buildCalles(),
+                    _buildCP(),
+                    _buildColonia(),
+                    _buildCiudad(),
+                    _buildEstado(),
                     SizedBox(height: 100),
                     RaisedButton(
                       child: Text(
-                        'Siguiente',
+                        'Pagar ahora',
                         style: TextStyle(color: Colors.red, fontSize: 16),
                       ),
                       onPressed: () {
@@ -203,12 +228,11 @@ class FormScreenState extends State<FormScreen>{
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return EntregaScreen();
+                                return CardScreen();
                               },
                             ),
                           );
                         }
-                        //_formKey.currentState.save();
                       },
                     )
                   ],
