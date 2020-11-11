@@ -23,34 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/home/description.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/home/main_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/home/products.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/login/login_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/signup_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/commonFieldWidget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/departamentosMainPageHorizontalScroll.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/Products/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/Products/product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/home/body.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/home/main_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/login/background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/background.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/login/body.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/login/login_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/department/department.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/department/department.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/menu/department.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/welcome/background.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/welcome/body.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/welcome/welcome_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/welcome/welcome_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/signup/background.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/signup/body.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/signup/body2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/body2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/signup/signup_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/departmentStyle.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/menuPrincipal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,10 +182,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
-    <state x="424" y="7" key="CommitChangelistDialog2" timestamp="1604116516196">
+    <state x="424" y="0" key="CommitChangelistDialog2" timestamp="1605122198093">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="424" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1604116516196" />
+    <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605122198093" />
     <state x="743" y="279" key="FileChooserDialogImpl" timestamp="1603694407528">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -237,6 +210,10 @@
     </state>
     <state width="1491" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605061377329" />
     <state width="906" height="277" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
+    <state x="621" y="115" key="RollbackChangesDialog" timestamp="1605122236504">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="621" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605122236504" />
     <state x="457" y="156" key="SettingsEditor" timestamp="1603694412150">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
