@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:flutter/foundation.dart';
 class CartItem{
@@ -51,19 +51,28 @@ void removeItem(String id){
 //Remove single item in cart
 void removeSingleItem(String id){
     //if the item is not present in the cart then we can not remove it
-  if(_items.containsKey(id)){
+  if(!_items.containsKey(id)){
     return;
   }if(_items[id].cantidad>1){
-    _items.update(id, (existingCartItem) => CartItem(
+    _items.update(id,
+            (existingCartItem) => CartItem(
         id: DateTime.now().toString(),
         name: existingCartItem.name,
-        cantidad: existingCartItem.cantidad + 1,
+        cantidad: existingCartItem.cantidad - 1,
         price: existingCartItem.price));
 
 
   }
   notifyListeners();
 }
+
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.cantidad;
+    });
+    return total;
+  }
 
 void clear(){
     _items = {};
