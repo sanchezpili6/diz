@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+
 class CreditCard extends StatefulWidget{
   final titular;
   final numeroTarjeta;

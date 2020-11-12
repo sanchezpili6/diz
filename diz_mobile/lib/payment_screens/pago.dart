@@ -22,15 +22,14 @@ class FormScreenState extends State<FormScreen>{
 
   String _name;
   String _lastname;
-  String _birthday;
+  DateTime _birthday;
   String _mail;
   String _number;
   String _gender;
-  String _adress;
-  DateTime _dateTime;
 
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey <FormState>();
+  TextEditingController dateCtl = TextEditingController();
 
   Widget _buildName(){
     return TextFormField(
@@ -63,30 +62,26 @@ class FormScreenState extends State<FormScreen>{
   }
 
   Widget _buildBirthday(){
-    /*return RaisedButton(
-      child: Text('Fecha'),
-      onPressed: (){
-        showDatePicker(context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2000),
-            lastDate: DateTime(2020)
-        ).then((date){
-          setState(() {
-            _dateTime= date;
-          });
-        });
-      },
-    );*/
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Fecha Nacimiento'),
-
       validator: (String value){
         if(value.isEmpty){
           return 'Dato requerido';
         }
       } ,
-      onSaved: (String value){
-        _birthday = value;
+      controller: dateCtl,
+      decoration: InputDecoration(
+          labelText: "Fecha de nacimiento"),
+      onTap: () async{
+        _birthday = DateTime(1900);
+        FocusScope.of(context).requestFocus(new FocusNode());
+
+        _birthday = await showDatePicker(
+            context: context,
+            initialDate:DateTime.now(),
+            firstDate:DateTime(1970),
+            lastDate: DateTime(2022));
+
+        dateCtl.text = DateFormat('yyyy-MM-dd').format(_birthday);
       },
     );
   }
@@ -100,6 +95,7 @@ class FormScreenState extends State<FormScreen>{
           return 'Correo requerido';
         }
         if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+          // ignore: missing_return, missing_return
           return 'Correo invalido';
         }
       } ,
@@ -128,6 +124,9 @@ class FormScreenState extends State<FormScreen>{
     return DropdownButtonFormField(
       decoration: InputDecoration(labelText: 'Género'),
       value: _gender,
+      onChanged: (_genderSelected) =>
+          setState(() => _gender = _genderSelected),
+      validator: (value) => value == null ? 'Dato requerido' : null,
       items: [
         DropdownMenuItem(
           child: Text("Masculino"),
@@ -142,11 +141,11 @@ class FormScreenState extends State<FormScreen>{
           value: 3,
         ),
       ],
-      onChanged: (value) {
-        setState(() {
-          _gender = value;
-        });
-      },
+      /*onChanged: (value) {
+          setState(() {
+            _gender = value;
+          });
+        },*/
     );
   }
 

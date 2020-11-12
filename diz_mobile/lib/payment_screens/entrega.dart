@@ -118,6 +118,9 @@ class EntregaScreenState extends State<EntregaScreen>{
     return DropdownButtonFormField(
       decoration: InputDecoration(labelText: 'Estado'),
       value: _estado,
+      onChanged: (_estadoSelected) =>
+          setState(() => _estado = _estadoSelected),
+      validator: (value) => value == null ? 'Dato requerido' : null,
       items: [
         DropdownMenuItem(
           child: Text("Aguascalientes"),
@@ -148,11 +151,11 @@ class EntregaScreenState extends State<EntregaScreen>{
           value: 7,
         ),
       ],
-      onChanged: (value) {
+      /*onChanged: (value) {
         setState(() {
           _estado = value;
         });
-      },
+      },*/
     );
   }
 

@@ -54,6 +54,9 @@ class CardScreenState extends State<CardScreen>{
         if(value.isEmpty){
           return 'Dato requerido';
         }
+        if(value.length <16){
+          return 'Numero invalido';
+        }
         return null;
       } ,
       onSaved: (String value){
@@ -64,7 +67,7 @@ class CardScreenState extends State<CardScreen>{
 
   Widget _buildVencimiento(){
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Fecha vencimiento'),
+      decoration: InputDecoration(labelText: 'Fecha vencimiento (MM/YY)'),
       maxLength: 5,
       keyboardType: TextInputType.phone,
       validator: (String value){
@@ -81,12 +84,16 @@ class CardScreenState extends State<CardScreen>{
 
   Widget _buildCV(){
     return TextFormField(
+      obscureText: true,
       decoration: InputDecoration(labelText: 'CV'),
       maxLength: 3,
       keyboardType: TextInputType.phone,
       validator: (String value){
         if(value.isEmpty){
           return 'Dato requerido';
+        }
+        if(value.length <3){
+          return 'CV invalido';
         }
         return null;
       } ,
