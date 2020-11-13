@@ -26,7 +26,7 @@ class Orders with ChangeNotifier {
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
-    final url = 'https://first-ecom.firebaseio.com/orders.json';
+    final url = '';
     final timeStamp = DateTime.now();
     try {
       final response = await http.post(url,

@@ -15,6 +15,8 @@ class Product with ChangeNotifier {
         @required this.description,
         @required this.imgUrl,
         @required this.price});
+
+
 }
 
 class Products with ChangeNotifier {
@@ -55,8 +57,8 @@ class Products with ChangeNotifier {
       imgUrl:
       'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png',
       price: 4,
-      category: 'Romantc',
-      description: 'Best selling poular free roaming game',
+      category: 'Romantic',
+      description: 'Best selling popular free roaming game',
     ),
     Product(
       id: '5',
