@@ -32,8 +32,8 @@ class Product with ChangeNotifier {
   }
 }
 
-class Products with ChangeNotifier {
-  static List<Product> initProducts (){
+class Products with ChangeNotifier  {
+  Future <List<Product>> initProducts () async{
     List<Product> productsList = [];
     var url = 'https://erp-test-jafjdugfba-uc.a.run.app/id/';
 
@@ -60,7 +60,7 @@ class Products with ChangeNotifier {
   }
 
 
-  List<Product> _items = initProducts();
+  List<Product> _items = [];
   // [
   //   Product(
   //     id: '1',
