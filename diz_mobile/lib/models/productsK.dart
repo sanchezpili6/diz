@@ -1,4 +1,8 @@
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+
 
 class Product with ChangeNotifier {
   final String id;
@@ -16,68 +20,105 @@ class Product with ChangeNotifier {
         @required this.imgUrl,
         @required this.price});
 
-
+  factory Product.fromJson(Map<String, dynamic> json){
+    return Product(
+      id: json['id'],
+      category: json['idDepto'],
+      name: json['name'],
+      description: json['descripcion'],
+      imgUrl: json['url'],
+      price: json['PrecioVenta'],
+    );
+  }
 }
 
 class Products with ChangeNotifier {
-  List<Product> _items = [
-    Product(
-      id: '1',
-      name: 'Art Of The Deal',
-      imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/1/1c/Trump_the_art_of_the_deal.jpg',
-      price: 5,
-      category: 'Business',
-      description:
-      'Trump: The Art of the Deal is a 1987 book credited to Donald J. Trump and journalist Tony Schwartz. Part memoir and part business-advice book, it was the first book credited to Trump, and helped to make him a "household name".',
-    ),
-    Product(
-      id: '2',
-      name: 'Rich Dad Poor Dad',
-      imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/b/b9/Rich_Dad_Poor_Dad.jpg',
-      price: 5,
-      category: 'Business',
-      description:
-      'Rich Dad Poor Dad is a 1997 book written by Robert Kiyosaki and Sharon Lechter. It advocates the importance of financial literacy, financial independence and building wealth through investing in assets',
-    ),
-    Product(
-      id: '3',
-      name: 'PS4 Dual Shock',
-      imgUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/5/59/DualShock_4.jpg',
-      price: 4,
-      category: 'Fiction',
-      description:
-      'The PlayStation 4 (officially abbreviated as PS4) is an eighth-generation home video game console developed by Sony Interactive Entertainment. Announced as the successor to the PlayStation 3 in February 2013, it was launched on November 15 in North America, November 29 in Europe, South America and Australia, and on February 22, 2014 in Japan.',
-    ),
-    Product(
-      id: '4',
-      name: 'GTA V',
-      imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png',
-      price: 4,
-      category: 'Romantic',
-      description: 'Best selling popular free roaming game',
-    ),
-    Product(
-      id: '5',
-      name: 'RDR 2',
-      imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg',
-      price: 4,
-      category: 'Games',
-      description: 'Free roam classic by Rockstar',
-    ),
-    Product(
-      id: '6',
-      name: 'Acer Aspire',
-      imgUrl: 'https://www.hilaptop.com/userdata/public/gfx/6060.jpg',
-      price: 4,
-      category: 'Laptops',
-      description: '8 gb ram, mx 150.',
-    ),
-  ];
+  static List<Product> initProducts (){
+    List<Product> productsList = [];
+    var url = 'https://erp-test-jafjdugfba-uc.a.run.app/id/';
+
+
+    for(int id=0; id< 75; id++){
+      fetchProduct();
+    }
+    return [];
+  }
+
+  Future<Product> fetchProduct(int id) async {
+    final response = await http.get(
+        'https://jsonplaceholder.typicode.com/albums/'+id.toString());
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return Product.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load Product');
+    }
+  }
+
+
+  List<Product> _items = initProducts();
+  // [
+  //   Product(
+  //     id: '1',
+  //     name: 'Art Of The Deal',
+  //     imgUrl:
+  //     'https://upload.wikimedia.org/wikipedia/en/1/1c/Trump_the_art_of_the_deal.jpg',
+  //     price: 5,
+  //     category: 'Business',
+  //     description:
+  //     'Trump: The Art of the Deal is a 1987 book credited to Donald J. Trump and journalist Tony Schwartz. Part memoir and part business-advice book, it was the first book credited to Trump, and helped to make him a "household name".',
+  //   ),
+  //   Product(
+  //     id: '2',
+  //     name: 'Cool Dad Poor soul',
+  //     imgUrl:
+  //     'https://upload.wikimedia.org/wikipedia/en/b/b9/Rich_Dad_Poor_Dad.jpg',
+  //     price: 5,
+  //     category: 'Business',
+  //     description:
+  //     'Rich Dad Poor Dad is a 1997 book written by Robert Kiyosaki and Sharon Lechter. It advocates the importance of financial literacy, financial independence and building wealth through investing in assets',
+  //   ),
+  //   Product(
+  //     id: '3',
+  //     name: 'PS4 Dual Shock',
+  //     imgUrl:
+  //     'https://upload.wikimedia.org/wikipedia/commons/5/59/DualShock_4.jpg',
+  //     price: 4,
+  //     category: 'Fiction',
+  //     description:
+  //     'The PlayStation 4 (officially abbreviated as PS4) is an eighth-generation home video game console developed by Sony Interactive Entertainment. Announced as the successor to the PlayStation 3 in February 2013, it was launched on November 15 in North America, November 29 in Europe, South America and Australia, and on February 22, 2014 in Japan.',
+  //   ),
+  //   Product(
+  //     id: '4',
+  //     name: 'GTA V',
+  //     imgUrl:
+  //     'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png',
+  //     price: 4,
+  //     category: 'Romantic',
+  //     description: 'Best selling popular free roaming game',
+  //   ),
+  //   Product(
+  //     id: '5',
+  //     name: 'RDR 2',
+  //     imgUrl:
+  //     'https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg',
+  //     price: 4,
+  //     category: 'Games',
+  //     description: 'Free roam classic by Rockstar',
+  //   ),
+  //   Product(
+  //     id: '6',
+  //     name: 'Acer Aspire',
+  //     imgUrl: 'https://www.hilaptop.com/userdata/public/gfx/6060.jpg',
+  //     price: 4,
+  //     category: 'Laptops',
+  //     description: '8 gb ram, mx 150.',
+  //   ),
+  // ];
 
   List<Product> get items {
     return [..._items];
