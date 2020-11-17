@@ -1,6 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 
 
@@ -37,27 +35,8 @@ class Products with ChangeNotifier  {
     List<Product> productsList = [];
     var url = 'https://erp-test-jafjdugfba-uc.a.run.app/id/';
 
-
-    for(int id=0; id< 75; id++){
-      fetchProduct();
-    }
-    return [];
   }
 
-  Future<Product> fetchProduct(int id) async {
-    final response = await http.get(
-        'https://jsonplaceholder.typicode.com/albums/'+id.toString());
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return Product.fromJson(jsonDecode(response.body));
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load Product');
-    }
-  }
 
 
   List<Product> _items = [];
