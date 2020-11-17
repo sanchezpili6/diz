@@ -44,7 +44,7 @@ class NavDrawer extends StatelessWidget {
               DepartmentWidget(
                 icon: Icon(Icons.local_drink),
                 title: Text('Vinos y licores'),
-                color: Color(0xFFE94B3C),
+                color: cVinosLicores,
                 bckColor: Color(0xFF2D2926),
               ),
               DepartmentWidget(
@@ -56,13 +56,13 @@ class NavDrawer extends StatelessWidget {
               DepartmentWidget(
                 icon: Icon(Icons.face),
                 title: Text("Ropa"),
-                color: Color(0xFF8C004B),
+                color: cRopa,
                 bckColor: Color(0xFF101820),
               ),
               DepartmentWidget(
                 icon: Icon(Icons.videogame_asset),
                 title: Text("Videojuegos"),
-                color: Color(0xFF006b38),
+                color: cVideojuegos,
                 bckColor: Color(0xFF101820),
               ),
             ],
