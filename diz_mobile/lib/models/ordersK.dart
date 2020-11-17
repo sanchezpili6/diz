@@ -26,6 +26,7 @@ class Orders with ChangeNotifier {
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
+    //link a firebase
     final url = '';
     final timeStamp = DateTime.now();
     try {

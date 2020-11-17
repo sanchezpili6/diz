@@ -32,13 +32,13 @@ class CartScreen extends StatelessWidget {
           CheckoutButton(
             cart: cart,
           ),
-           FlatButton(
-               onPressed: () {
-               },
-               child: Text(
-                 'Checkout',
-                 style: TextStyle(color: Colors.blue, fontSize: 20),
-               ))
+           //FlatButton(
+          //     onPressed: () {
+            //   },
+           //    child: Text(
+          //       'Checkout',
+            //     style: TextStyle(color: Colors.blue, fontSize: 20),
+           //    ))
         ],
       ),
     );
@@ -60,6 +60,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       child: Text('Checkout'),
       onPressed: widget.cart.totalAmount <= 0
           ? null
+      //async working with server
           : () async {
         await Provider.of<Orders>(context, listen: false).addOrder(
             widget.cart.items.values.toList(), widget.cart.totalAmount);
