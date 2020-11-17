@@ -1,7 +1,9 @@
 import 'package:diz/screens/home/products.dart';
+import 'package:diz/widgets/allProducts.dart';
 import 'package:diz/widgets/departamentosMainPageHorizontalScroll.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
+import 'package:diz/screens/cart_screen.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -14,11 +16,11 @@ class MainPage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: (){},
+            onPressed: (){} ,
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: (){},
+            onPressed: ()=>Navigator.of(context).pushNamed(CartScreen.routeName),
           ),
         ],
       ),
@@ -27,7 +29,7 @@ class MainPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             child: Text(
-              "Artículos con descuento",
+              "Categorías",
               style: Theme.of(context)
                   .textTheme
                   .headline5
@@ -37,7 +39,7 @@ class MainPage extends StatelessWidget {
           Departamentos(),
           Container(
             height: 600.0,
-            child: Products(),
+            child: AllProducts(),
           )
         ],
       ),
