@@ -1,3 +1,4 @@
+import 'package:diz/constants.dart';
 import 'package:diz/screens/department/department.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
@@ -37,7 +38,7 @@ class NavDrawer extends StatelessWidget {
               DepartmentWidget(
                 icon: Icon(Icons.local_library),
                 title: Text('Librería'),
-                color: Color(0xFFF2AA4C),
+                color: cLibreria,
                 bckColor: Color(0xFF101820),
               ),
               DepartmentWidget(
