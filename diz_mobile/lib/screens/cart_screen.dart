@@ -1,3 +1,5 @@
+import 'package:diz/screens/payment/user_data.dart';
+import 'package:diz/services/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/models/ordersK.dart';
 import 'package:provider/provider.dart';
@@ -31,14 +33,15 @@ class CartScreen extends StatelessWidget {
           ),
           CheckoutButton(
             cart: cart,
+            context: context,
           ),
-           //FlatButton(
+          //FlatButton(
           //     onPressed: () {
-            //   },
-           //    child: Text(
+          //   },
+          //    child: Text(
           //       'Checkout',
-            //     style: TextStyle(color: Colors.blue, fontSize: 20),
-           //    ))
+          //     style: TextStyle(color: Colors.blue, fontSize: 20),
+          //    ))
         ],
       ),
     );
@@ -47,8 +50,8 @@ class CartScreen extends StatelessWidget {
 
 class CheckoutButton extends StatefulWidget {
   final Cart cart;
-
-  const CheckoutButton({@required this.cart});
+  final context;
+  const CheckoutButton({@required this.cart, this.context});
   @override
   _CheckoutButtonState createState() => _CheckoutButtonState();
 }
@@ -58,14 +61,25 @@ class _CheckoutButtonState extends State<CheckoutButton> {
   Widget build(BuildContext context) {
     return FlatButton(
       child: Text('Checkout'),
-      onPressed: widget.cart.totalAmount <= 0
-          ? null
-      //async working with server
-          : () async {
-        await Provider.of<Orders>(context, listen: false).addOrder(
-            widget.cart.items.values.toList(), widget.cart.totalAmount);
-        widget.cart.clear();
+      onPressed: () {
+        getCart(widget.cart, context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return FormScreen();
+            },
+          ),
+        );
       },
+      /*widget.cart.totalAmount <= 0
+          ? null
+          //async working with server
+          : () async {
+              await Provider.of<Orders>(context, listen: false).addOrder(
+                  widget.cart.items.values.toList(), widget.cart.totalAmount);
+              widget.cart.clear();
+            },*/
     );
   }
 }
