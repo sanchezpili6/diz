@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1088758311583",
+    "firebase_url": "https://e-diz-684ad.firebaseio.com",
+    "project_id": "e-diz-684ad",
+    "storage_bucket": "e-diz-684ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088758311583:android:1cc77778d432c346bf50aa",
+        "android_client_info": {
+          "package_name": "co.diz.diz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088758311583-9a061h1qjmt7gq21gploi5pofv2au5h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABIzX05kPZXORMzHAz6mx1Mx3ey2wBePk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088758311583-9a061h1qjmt7gq21gploi5pofv2au5h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

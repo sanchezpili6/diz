@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   color: Colors.blue,
                   onPressed: (){
-                    if(mail=='jacky@gmail.com' && password=='jacky')
+                   // if(mail=='jacky@gmail.com' && password=='jacky')
                     {
                       print('entra');
                       Navigator.push(
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     }
-                    else{
+                    /*else{
                       showDialog(
                           context: context,
                           builder: (buildcontext) {
@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           }
                       );
-                    }
+                    }*/
                   },
                   child: Text("INICIAR SESIÓN",
                     style: TextStyle(

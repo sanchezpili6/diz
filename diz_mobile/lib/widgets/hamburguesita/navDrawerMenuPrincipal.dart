@@ -1,3 +1,4 @@
+import 'package:diz/constants.dart';
 import 'package:diz/screens/department/department.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
@@ -37,13 +38,13 @@ class NavDrawer extends StatelessWidget {
               DepartmentWidget(
                 icon: Icon(Icons.local_library),
                 title: Text('Librería'),
-                color: Color(0xFFF2AA4C),
+                color: cLibreria,
                 bckColor: Color(0xFF101820),
               ),
               DepartmentWidget(
                 icon: Icon(Icons.local_drink),
                 title: Text('Vinos y licores'),
-                color: Color(0xFFE94B3C),
+                color: cVinosLicores,
                 bckColor: Color(0xFF2D2926),
               ),
               DepartmentWidget(
@@ -55,13 +56,13 @@ class NavDrawer extends StatelessWidget {
               DepartmentWidget(
                 icon: Icon(Icons.face),
                 title: Text("Ropa"),
-                color: Color(0xFF8C004B),
+                color: cRopa,
                 bckColor: Color(0xFF101820),
               ),
               DepartmentWidget(
                 icon: Icon(Icons.videogame_asset),
                 title: Text("Videojuegos"),
-                color: Color(0xFF006b38),
+                color: cVideojuegos,
                 bckColor: Color(0xFF101820),
               ),
             ],
