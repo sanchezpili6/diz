@@ -22,9 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,7 +159,8 @@
     <MESSAGE value="Agregar logo en menu y inicio de sesión" />
     <MESSAGE value="no crashea esta versión 10/10" />
     <MESSAGE value="apk config" />
-    <option name="LAST_COMMIT_MESSAGE" value="apk config" />
+    <MESSAGE value="Agregada imagen chip" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregada imagen chip" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="90" key="#Intentions" timestamp="1605672583497">
