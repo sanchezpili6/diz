@@ -29,7 +29,7 @@ class MainPage extends StatelessWidget{
           ),
         ],
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -44,7 +44,7 @@ class MainPage extends StatelessWidget{
           Departamentos(),
           Container(
             height: 600.0,
-            child: AllProducts(),
+            child: AllProducts(cat: 4),
           )
         ],
       ),

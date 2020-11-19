@@ -8,18 +8,27 @@ import 'dart:convert';
 
 
 class AllProducts extends StatefulWidget with ChangeNotifier {
+  final int cat;
+
+  AllProducts({
+    int cat
+  }): this.cat = cat;
+
   @override
-  _AllProductsState createState() => _AllProductsState();
+  _AllProductsState createState() => _AllProductsState(cat);
 }
 
 class _AllProductsState extends State<AllProducts>{
+  _AllProductsState(this.cat);
+  final int cat;
+
   List<Product> _products = List<Product>();
 
   List<Product> get products {
     return [..._products];
   }
   Future <List<Product>> fetchProducts() async {
-    var url = 'https://mod3-jafjdugfba-uc.a.run.app/departamento/4';
+    var url = 'https://mod3-jafjdugfba-uc.a.run.app/departamento/'+cat.toString();
     var response = await http.get(url);
     var products = List<Product>();
     if (response.statusCode == 200) {
