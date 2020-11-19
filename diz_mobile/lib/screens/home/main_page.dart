@@ -29,24 +29,25 @@ class MainPage extends StatelessWidget{
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            child: Text(
-              "Categorías",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  .copyWith(fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: Text(
+                "Categorías",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          Departamentos(),
-          Container(
-            height: 600.0,
-            child: AllProducts(cat: 4),
-          )
-        ],
+            Departamentos(),
+            Container(
+              child: AllProducts(cat: 4),
+            ),
+          ],
+        ),
       ),
     );
   }
