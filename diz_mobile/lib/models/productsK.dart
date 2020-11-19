@@ -1,3 +1,6 @@
+import 'dart:convert';
+//import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 
 
@@ -9,6 +12,8 @@ class Product with ChangeNotifier {
   final String description;
   final String imgUrl;
   final double price;
+
+
 
   Product(
       {@required this.id,
@@ -30,17 +35,19 @@ class Product with ChangeNotifier {
   }
 }
 
-
-class Products with ChangeNotifier  {
-  Future <List<Product>> initProducts () async{
-    List<Product> productsList = [];
-    var url = 'https://mod3-jafjdugfba-uc.a.run.app/departamento/4';
-
-  }
+class Products with ChangeNotifier {
 
 
 
-  List<Product> _items = [];
+  List<Product> _items = [
+   /* Product.fromJson(jsonDecode(r'''{
+idProducto: 50,
+nombre: "Lavadora Samsung",
+descripcion: "Lavadora Samsung 18 kg gris claro WT18K5200MB/AX",
+url: "https://tinyurl.com/y5aqnu82",
+precioVenta: "11000"
+}'''))*/
+  ];
 
 
   List<Product> get items {
@@ -50,3 +57,4 @@ class Products with ChangeNotifier  {
   Product findById(String id) {
     return _items.firstWhere((pdt) => pdt.id == id);
   }
+}

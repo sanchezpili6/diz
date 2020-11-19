@@ -22,16 +22,20 @@ class _MainPageState extends State<MainPage>{
     var response = await http.get(url);
     var products = List<Product>();
     if (response.statusCode == 200) {
+      print('ok cargo');
       var prodsJson = json.decode(response.body);
       for(var productJson in prodsJson){
+        print(productJson);
         products.add(Product.fromJson(productJson));
       }
 
     } else {
+      print('no cargo');
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to load Product');
     }
+    print(products);
     return products;
   }
 

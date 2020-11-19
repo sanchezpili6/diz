@@ -12,7 +12,7 @@ class DetailPage extends StatelessWidget {
         .of(context)
         .settings
         .arguments as String;
-    final loadedPdt = Provider.of<Product>(context).findById(productId);
+    final loadedPdt = Provider.of<Products>(context).findById(productId);
     final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
