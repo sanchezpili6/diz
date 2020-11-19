@@ -1,9 +1,10 @@
-import 'package:diz/constants.dart';
+import 'package:diz/widgets/formulario/birthday.dart';
+import 'package:diz/widgets/formulario/mail.dart';
+import 'package:diz/widgets/formulario/name.dart';
 import 'package:diz/screens/payment/delivery.dart';
+import 'package:diz/widgets/formulario/phoneNumber.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 import '../cart_screen.dart';
 
 void main() {
@@ -27,115 +28,9 @@ class FormScreenState extends State<FormScreen> {
   String _mail;
   String _number;
   String _gender;
-
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController dateCtl = TextEditingController();
-
-  Widget _buildName() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Nombre'),
-      maxLength: 20,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Nombre requerido';
-        } else {
-          return null;
-        }
-      },
-      onSaved: (String value) {
-        _name = value;
-      },
-    );
-  }
-
-  Widget _buildLastName() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Apellidos: '),
-      maxLength: 20,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Apellido requerido';
-        } else {
-          return null;
-        }
-      },
-      onSaved: (String value) {
-        _lastname = value;
-      },
-    );
-  }
-
-  Widget _buildBirthday() {
-    return TextFormField(
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dato requerido';
-        } else {
-          return null;
-        }
-      },
-      controller: dateCtl,
-      decoration: InputDecoration(labelText: "Fecha de nacimiento"),
-      onTap: () async {
-        _birthday = DateTime(1900);
-        FocusScope.of(context).requestFocus(new FocusNode());
-
-        _birthday = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1970),
-            lastDate: DateTime(2022));
-
-        dateCtl.text = DateFormat('yyyy-MM-dd').format(_birthday);
-      },
-    );
-  }
-
-  Widget _buildMail() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Correo'),
-      maxLength: 20,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Correo requerido';
-        }
-        if (!RegExp(
-                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-            .hasMatch(value)) {
-          // ignore: missing_return, missing_return
-          return 'Correo invalido';
-        } else {
-          return null;
-        }
-      },
-      onSaved: (String value) {
-        _mail = value;
-      },
-    );
-  }
-
-  Widget _buildNumber() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Numero telefonico'),
-      keyboardType: TextInputType.phone,
-      maxLength: 10,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dato requerido';
-        }
-        if (value.length < 10) {
-          return "Numero invalido";
-        } else {
-          return null;
-        }
-      },
-      onSaved: (String value) {
-        _number = value;
-      },
-    );
-  }
-
   Widget _buildGender() {
     return DropdownButtonFormField(
       decoration: InputDecoration(labelText: 'Género'),
@@ -144,15 +39,15 @@ class FormScreenState extends State<FormScreen> {
       validator: (value) => value == null ? 'Dato requerido' : null,
       items: [
         DropdownMenuItem(
-          child: Text("Masculino"),
+          child: Text("H"),
           value: 1,
         ),
         DropdownMenuItem(
-          child: Text("Femenino"),
+          child: Text("M"),
           value: 2,
         ),
         DropdownMenuItem(
-          child: Text("Otro"),
+          child: Text("O"),
           value: 3,
         ),
       ],
@@ -163,7 +58,6 @@ class FormScreenState extends State<FormScreen> {
         },*/
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -197,12 +91,13 @@ class FormScreenState extends State<FormScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    _buildName(),
-                    _buildLastName(),
+                    buildName(_name, 'Nombre'),
+                    buildName(_lastname, 'Apellido Paterno'),
+                    buildName(_lastname, 'Apellido Materno'),
                     _buildGender(),
-                    _buildBirthday(),
-                    _buildMail(),
-                    _buildNumber(),
+                    buildBirthday(dateCtl, _birthday, context),
+                    buildMail(_mail),
+                    buildNumber(_number),
                     SizedBox(height: 100),
                     RaisedButton(
                       child: Text(

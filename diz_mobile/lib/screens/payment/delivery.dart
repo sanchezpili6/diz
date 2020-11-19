@@ -1,8 +1,7 @@
 import 'package:diz/screens/payment/card_data.dart';
+import 'package:diz/widgets/formulario/street.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import '../cart_screen.dart';
 
 void main() {
@@ -28,89 +27,23 @@ class EntregaScreenState extends State<EntregaScreen> {
   String _cp;
   String _estado;
   String _calles;
-
+  final myController = TextEditingController();
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  Widget _buildStreet() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Calle'),
-      maxLength: 50,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dirección requerida';
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _street = value;
-      },
-    );
+  @override
+  void initState() {
+    super.initState();
+    myController.addListener(_printLatestValue);
   }
-
-  Widget _buildNumC() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'No. de casa'),
-      maxLength: 50,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dirección requerida';
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _numCasa = value;
-      },
-    );
+  _printLatestValue() {
+    print("${myController.text}");
   }
-
-  Widget _buildColonia() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Colonia'),
-      maxLength: 50,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dirección requerida';
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _colonia = value;
-      },
-    );
-  }
-
-  Widget _buildCiudad() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Ciudad'),
-      maxLength: 50,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dirección requerida';
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _ciudad = value;
-      },
-    );
-  }
-
-  Widget _buildCP() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Código postal'),
-      maxLength: 50,
-      keyboardType: TextInputType.phone,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dirección requerida';
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _cp = value;
-      },
-    );
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the widget tree.
+    // This also removes the _printLatestValue listener.
+    myController.dispose();
+    super.dispose();
   }
 
   Widget _buildEstado() {
@@ -157,22 +90,6 @@ class EntregaScreenState extends State<EntregaScreen> {
     );
   }
 
-  Widget _buildCalles() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Calles contiguas'),
-      maxLength: 50,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Dirección requerida';
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _calles = value;
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,12 +124,12 @@ class EntregaScreenState extends State<EntregaScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    _buildCP(),
-                    _buildStreet(),
-                    _buildNumC(),
-                    _buildCalles(),
-                    _buildColonia(),
-                    _buildCiudad(),
+                    buildStreet(_cp, 'Código Postal'),
+                    buildStreet(_street, 'Calle'),
+                    buildStreet(_numCasa, 'No. de casa'),
+                    buildStreet(_calles, 'Calles contiguas'),
+                    buildStreet(_colonia, 'Colonia'),
+                    buildStreet(_ciudad, 'Ciudad'),
                     _buildEstado(),
                     SizedBox(height: 100),
                     RaisedButton(
