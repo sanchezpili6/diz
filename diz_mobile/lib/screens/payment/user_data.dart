@@ -46,10 +46,10 @@ class FormScreenState extends State<FormScreen> {
           child: Text("M"),
           value: 2,
         ),
-        /*DropdownMenuItem(
-          child: Text("Otro"),
+        DropdownMenuItem(
+          child: Text("O"),
           value: 3,
-        ),*/
+        ),
       ],
       /*onChanged: (value) {
           setState(() {
