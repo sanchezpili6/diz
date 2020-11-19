@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Widget buildMail(_mail) {
   return TextFormField(
     decoration: InputDecoration(labelText: 'Correo'),
-    maxLength: 20,
+    maxLength: 30,
     validator: (String value) {
       if (value.isEmpty) {
         return 'Correo requerido';

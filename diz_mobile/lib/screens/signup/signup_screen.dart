@@ -1,5 +1,6 @@
 import 'package:diz/screens/signup/body2.dart';
 import 'package:diz/widgets/commonFieldWidget.dart';
+import 'package:diz/widgets/formulario/mail.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/widgets/background.dart';
 import 'package:intl/intl.dart';
@@ -11,6 +12,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   DateTime _birthday;
+  String mail;
 
   TextEditingController dateCtl = TextEditingController();
   String nombre = '', apellidoPaterno = '', apellidoMaterno = '';
@@ -40,6 +42,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: size.height * 0.02),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  width: size.width * 0.8,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(29),
+                  ),
+                  child: buildMail(mail),
+                ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
