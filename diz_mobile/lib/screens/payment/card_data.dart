@@ -3,7 +3,9 @@ import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../user_model.dart';
 import '../cart_screen.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MaterialApp(
@@ -20,6 +22,26 @@ class CardScreen extends StatefulWidget {
   CardScreenState createState() => CardScreenState();
 }
 
+Future<UserModel> validarTarjeta(
+    String noTarjeta, mesTarjeta, anioTarjeta) async {
+  final String apiURL = 'http://35.239.19.77:8000/cards/';
+
+  final response = await http.post(apiURL, body: {
+    "noTarjeta": noTarjeta,
+    "mesTarjeta": mesTarjeta,
+    "anioTarjeta": anioTarjeta
+  });
+
+  if (response.statusCode == 202) {
+    final String responseString = response.body;
+    //print("Status = " + response.statusCode.toString());
+    return userModelFromJson(responseString);
+  } else {
+    //print("Status = " + response.statusCode.toString());
+    return null;
+  }
+}
+
 class CardScreenState extends State<CardScreen> {
   String _titular;
   String _numeroTarjeta;
@@ -27,8 +49,14 @@ class CardScreenState extends State<CardScreen> {
   String _vencimiento_year;
   String _cv;
 
+  UserModel _user;
+  bool valid;
+
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController numController = TextEditingController();
+  final TextEditingController mesController = TextEditingController();
+  final TextEditingController anioController = TextEditingController();
 
   Widget _buildNombre() {
     return TextFormField(
@@ -48,6 +76,7 @@ class CardScreenState extends State<CardScreen> {
 
   Widget _buildNumero() {
     return TextFormField(
+      controller: numController,
       decoration: InputDecoration(labelText: 'Numero tarjeta'),
       maxLength: 16,
       keyboardType: TextInputType.phone,
@@ -68,6 +97,7 @@ class CardScreenState extends State<CardScreen> {
 
   Widget _buildVencimientoM() {
     return TextFormField(
+      controller: mesController,
       decoration: InputDecoration(labelText: 'Fecha vencimiento (MM)'),
       maxLength: 2,
       keyboardType: TextInputType.phone,
@@ -88,6 +118,7 @@ class CardScreenState extends State<CardScreen> {
 
   Widget _buildVencimientoY() {
     return TextFormField(
+      controller: anioController,
       decoration: InputDecoration(labelText: 'Fecha vencimiento (YY)'),
       maxLength: 2,
       keyboardType: TextInputType.phone,
@@ -172,32 +203,65 @@ class CardScreenState extends State<CardScreen> {
                       )
                     ]),
                     _buildCV(),
-                    /*CreditCard(//titular: _numeroTarjeta,
-                    //vencimiento: _vencimiento
-                    ),*/
+                    SizedBox(height: 100),
+                    valid == false ? Text('Tarjeta invalida') : Container(),
                     SizedBox(height: 100),
                     RaisedButton(
                       child: Text(
                         'Pagar ahora',
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (!_formKey.currentState.validate()) {
                           return;
                         } else {
                           _formKey.currentState.save();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return CardPyScreen(
-                                  numeroT: _numeroTarjeta,
-                                  vencM: _vencimiento_month,
-                                  vencY: _vencimiento_year,
-                                );
-                              },
-                            ),
-                          );
+                          final String noTarjeta = numController.text;
+                          final String mesTarjeta = mesController.text;
+                          final String anioTarjeta = anioController.text;
+
+                          final UserModel user = await validarTarjeta(
+                              noTarjeta, mesTarjeta, anioTarjeta);
+
+                          setState(() {
+                            _user = user;
+                          });
+                          if (_user != null) {
+                            //print("Tarjeta valida");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return CardPyScreen(
+                                    numeroT: _numeroTarjeta,
+                                    vencM: _vencimiento_month,
+                                    vencY: _vencimiento_year,
+                                  );
+                                },
+                              ),
+                            );
+                          } else {
+                            //print("Tarjeta invalida");
+                            showDialog(
+                                context: context,
+                                builder: (buildcontext) {
+                                  return AlertDialog(
+                                    title: Text("ERROR"),
+                                    content: Text("Tarjeta invalida"),
+                                    actions: <Widget>[
+                                      RaisedButton(
+                                        child: Text(
+                                          "CERRAR",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  );
+                                });
+                          }
                         }
                       },
                     )

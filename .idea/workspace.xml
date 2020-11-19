@@ -22,15 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="42f3be04-f542-476e-8112-b1577b304aae" name="Default Changelist" comment="Merge branch 'master' of https://github.com/sanchezpili6/diz into fernando_vf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Nexus_6_API_27]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -41,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="jacky" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,7 +56,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../flutter/bin/cache/dart-sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -133,21 +131,28 @@
       <option name="project" value="LOCAL" />
       <updated>1604115204364</updated>
     </task>
-    <task id="LOCAL-00007" summary="ya jala">
-      <created>1605724350536</created>
+    <task id="LOCAL-00007" summary="apk config">
+      <created>1605725495914</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1605724350537</updated>
+      <updated>1605725495914</updated>
     </task>
-    <task id="LOCAL-00008" summary="Cambios para desplegar productos SingleCHildScrollView added en MainPage">
-      <created>1605810418320</created>
+    <task id="LOCAL-00008" summary="Bases para http con mdm">
+      <created>1605756996243</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1605810418320</updated>
+      <updated>1605756996243</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Validación de tarjeta">
+      <created>1605763205017</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605763205017</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,12 +173,16 @@
     <MESSAGE value="Agregar logo en menu y inicio de sesión" />
     <MESSAGE value="no crashea esta versión 10/10" />
     <MESSAGE value="apk config" />
-    <MESSAGE value="ya jala" />
-    <MESSAGE value="refactor widgets de delivery.dart . Creado street.dart" />
-    <MESSAGE value="Cambios para desplegar productos SingleCHildScrollView added en MainPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios para desplegar productos SingleCHildScrollView added en MainPage" />
+    <MESSAGE value="Agregada imagen chip" />
+    <MESSAGE value="Bases para http con mdm" />
+    <MESSAGE value="Validación de tarjeta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validación de tarjeta" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="90" key="#Intentions" timestamp="1605672583497">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="90" key="#Intentions/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605672583497" />
     <state x="361" y="71" key="#Project_Structure" timestamp="1604116131613">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -190,47 +199,57 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="693" y="313" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1603694458570" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605755043376">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605043457826">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605755043376" />
-    <state x="77" y="76" width="1383" height="673" key="AVDManager" timestamp="1605810047355">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="77" y="76" width="1383" height="673" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605810047355" />
-    <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
-    <state x="373" y="0" key="CommitChangelistDialog2" timestamp="1605756786338">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="373" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605756786338" />
-    <state x="743" y="279" key="FileChooserDialogImpl" timestamp="1603694407528">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605043457826" />
+    <state x="96" y="96" width="1728" height="852" key="AVDManager" timestamp="1603694412479">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
+    <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
+    <state x="424" y="0" key="CommitChangelistDialog2" timestamp="1605763204169">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605122198093" />
+    <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605756995520" />
+    <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1605763204169" />
+    <state x="594" y="231" key="FileChooserDialogImpl" timestamp="1605591408939">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="594" y="231" key="FileChooserDialogImpl/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605591408939" />
     <state x="743" y="279" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1603694407528" />
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1605810062992">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1476" height="219" key="GridCell.Tab.0.bottom" timestamp="1605807464773">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605810062992" />
+    <state width="1491" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605061377329" />
+    <state width="1476" height="219" key="GridCell.Tab.0.bottom/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605807464773" />
+    <state width="1476" height="220" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605648901124" />
     <state width="906" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1605810062992">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1476" height="219" key="GridCell.Tab.0.center" timestamp="1605807464773">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605810062992" />
+    <state width="1491" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605061377329" />
+    <state width="1476" height="219" key="GridCell.Tab.0.center/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605807464773" />
+    <state width="1476" height="220" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1605648901124" />
     <state width="906" height="277" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1605810062991">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1476" height="219" key="GridCell.Tab.0.left" timestamp="1605807464773">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605810062991" />
+    <state width="1491" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605061377329" />
+    <state width="1476" height="219" key="GridCell.Tab.0.left/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605807464773" />
+    <state width="1476" height="220" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1605648901123" />
     <state width="906" height="277" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847176" />
-    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1605810062992">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1476" height="219" key="GridCell.Tab.0.right" timestamp="1605807464773">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605810062992" />
+    <state width="1491" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605061377329" />
+    <state width="1476" height="219" key="GridCell.Tab.0.right/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605807464773" />
+    <state width="1476" height="220" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605648901124" />
     <state width="906" height="277" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1605724450804">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="412" y="193" key="MultipleFileMergeDialog" timestamp="1605812943372">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1605724450804" />
+    <state x="412" y="193" key="MultipleFileMergeDialog/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605812943372" />
     <state x="621" y="115" key="RollbackChangesDialog" timestamp="1605122236504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -239,10 +258,12 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="457" y="156" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412150" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605724357476">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="361" y="152" key="Vcs.Push.Dialog.v2" timestamp="1605763218659">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605724357476" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604115210670" />
+    <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605756999255" />
+    <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1605763218659" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604116165085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -251,13 +272,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604116837691" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605807948116">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="578" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605757022616">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605807948116" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605809379578">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604066744295" />
+    <state x="578" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605757022616" />
+    <state x="159" y="0" width="1299" height="576" key="dock-window-1" timestamp="1605715473592">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605809379578" />
+    <state x="159" y="0" width="1299" height="576" key="dock-window-1/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605715473592" />
+    <state x="431" y="152" width="672" height="711" key="search.everywhere.popup" timestamp="1605671528383">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604116143603" />
+    <state x="431" y="152" width="672" height="711" key="search.everywhere.popup/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605671528383" />
   </component>
 </project>
