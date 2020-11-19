@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_data.dart" afterDir="false" />
-    </list>
+    <list default="true" id="42f3be04-f542-476e-8112-b1577b304aae" name="Default Changelist" comment="Merge branch 'master' of https://github.com/sanchezpili6/diz into fernando_vf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -249,10 +246,10 @@
     <state width="1476" height="219" key="GridCell.Tab.0.right/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605807464773" />
     <state width="1476" height="220" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605648901124" />
     <state width="906" height="277" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state x="412" y="193" key="MultipleFileMergeDialog" timestamp="1605757124996">
+    <state x="412" y="193" key="MultipleFileMergeDialog" timestamp="1605812943372">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="412" y="193" key="MultipleFileMergeDialog/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605757124996" />
+    <state x="412" y="193" key="MultipleFileMergeDialog/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605812943372" />
     <state x="621" y="115" key="RollbackChangesDialog" timestamp="1605122236504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
