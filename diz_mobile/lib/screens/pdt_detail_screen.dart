@@ -8,15 +8,15 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute
+    final prod = ModalRoute
         .of(context)
         .settings
-        .arguments as String;
-    final loadedPdt = Provider.of<Products>(context).findById(productId);
+        .arguments as Product;
+    //final loadedPdt = Provider.of<Product>(context).findById(productId);
     final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(loadedPdt.name),
+        title: Text(prod.name),
       ),
       body: Column(
         children: <Widget>[
@@ -25,11 +25,11 @@ class DetailPage extends StatelessWidget {
             width: double.infinity,
             child: Padding(
               padding: const EdgeInsets.all(10),
-              child: Image.network(loadedPdt.imgUrl),
+              child: Image.network(prod.imgUrl),
             ),
           ),
           Text(
-            'Price: \$${loadedPdt.price}',
+            'Price: \$${prod.price}',
             style: TextStyle(
               fontSize: 30,
             ),
@@ -37,7 +37,7 @@ class DetailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Text(
-              '${loadedPdt.description}',
+              '${prod.description}',
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -47,7 +47,7 @@ class DetailPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          cart.addItem(productId, loadedPdt.name, loadedPdt.price);
+          cart.addItem(prod.id, prod.name, prod.price);
         },
         child: Icon(
           Icons.shopping_cart,
