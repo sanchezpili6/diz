@@ -6,7 +6,8 @@ import 'package:diz/models/productsK.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class AllProducts extends StatefulWidget {
+
+class AllProducts extends StatefulWidget with ChangeNotifier {
   @override
   _AllProductsState createState() => _AllProductsState();
 }
@@ -37,6 +38,10 @@ class _AllProductsState extends State<AllProducts>{
     }
     print(products);
     return products;
+  }
+
+  Product findById(String id) {
+    return _products.firstWhere((pdt) => pdt.id == id);
   }
 
 //return Product.fromJson(jsonDecode(response.body));
