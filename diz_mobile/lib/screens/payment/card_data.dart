@@ -34,8 +34,10 @@ Future<UserModel> validarTarjeta(
 
   if (response.statusCode == 202) {
     final String responseString = response.body;
+    //print("Status = " + response.statusCode.toString());
     return userModelFromJson(responseString);
   } else {
+    //print("Status = " + response.statusCode.toString());
     return null;
   }
 }
@@ -201,9 +203,6 @@ class CardScreenState extends State<CardScreen> {
                       )
                     ]),
                     _buildCV(),
-                    /*CreditCard(//titular: _numeroTarjeta,
-                    //vencimiento: _vencimiento
-                    ),*/
                     SizedBox(height: 100),
                     valid == false ? Text('Tarjeta invalida') : Container(),
                     SizedBox(height: 100),
@@ -228,6 +227,7 @@ class CardScreenState extends State<CardScreen> {
                             _user = user;
                           });
                           if (_user != null) {
+                            //print("Tarjeta valida");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -241,6 +241,7 @@ class CardScreenState extends State<CardScreen> {
                               ),
                             );
                           } else {
+                            //print("Tarjeta invalida");
                             showDialog(
                                 context: context,
                                 builder: (buildcontext) {
