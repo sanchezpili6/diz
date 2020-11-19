@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 
 class Product with ChangeNotifier {
   final String id;
-  final String category;
   final String name;
   final String description;
   final String imgUrl;
@@ -17,7 +16,6 @@ class Product with ChangeNotifier {
 
   Product(
       {@required this.id,
-        @required this.category,
         @required this.name,
         @required this.description,
         @required this.imgUrl,
@@ -25,12 +23,11 @@ class Product with ChangeNotifier {
 
   factory Product.fromJson(Map<String, dynamic> json){
     return Product(
-      id: json['id'],
-      category: json['idDepto'],
-      name: json['name'],
+      id: (json['idProducto']).toString(),
+      name: json['nombre'],
       description: json['descripcion'],
       imgUrl: json['url'],
-      price: json['PrecioVenta'],
+      price: double.parse(json['precioVenta']),
     );
   }
 }

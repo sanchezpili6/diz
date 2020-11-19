@@ -4,52 +4,12 @@ import 'package:diz/widgets/departamentosMainPageHorizontalScroll.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/cart_screen.dart';
-import 'package:diz/models/productsK.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
 
-class _MainPageState extends State<MainPage>{
-  List<Product> _products = List<Product>();
+class MainPage extends StatelessWidget{
 
-  Future <List<Product>> fetchProducts() async {
-    var url = 'https://mod3-jafjdugfba-uc.a.run.app/departamento/4';
-    var response = await http.get(url);
-    var products = List<Product>();
-    if (response.statusCode == 200) {
-      print('ok cargo');
-      var prodsJson = json.decode(response.body);
-      for(var productJson in prodsJson){
-        print(productJson);
-        products.add(Product.fromJson(productJson));
-      }
 
-    } else {
-      print('no cargo');
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load Product');
-    }
-    print(products);
-    return products;
-  }
-
-//return Product.fromJson(jsonDecode(response.body));
-  @override
-  void initState() {
-    fetchProducts().then((value) {
-      setState(() {
-        _products.addAll(value);
-      });
-    });
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
