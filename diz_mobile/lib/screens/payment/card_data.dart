@@ -3,6 +3,7 @@ import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../user_model.dart';
 import '../cart_screen.dart';
 
 void main() {
@@ -20,6 +21,13 @@ class CardScreen extends StatefulWidget {
   CardScreenState createState() => CardScreenState();
 }
 
+Future<UserModel> validarTarjeta(
+    String noTarjeta, mesTarjeta, anioTarjeta) async {
+  final String apiURL = 'http://35.239.19.77:8000/cards/';
+
+  //http.post(apiURL);
+}
+
 class CardScreenState extends State<CardScreen> {
   String _titular;
   String _numeroTarjeta;
@@ -29,6 +37,7 @@ class CardScreenState extends State<CardScreen> {
 
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
 
   Widget _buildNombre() {
     return TextFormField(
