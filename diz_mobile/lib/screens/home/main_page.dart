@@ -1,4 +1,4 @@
-import 'package:diz/screens/home/products.dart';
+
 import 'package:diz/widgets/allProducts.dart';
 import 'package:diz/widgets/departamentosMainPageHorizontalScroll.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage>{
   List<Product> _products = List<Product>();
 
   Future <List<Product>> fetchProducts() async {
-    var url = 'https://jsonplaceholder.typicode.com/albums/';
+    var url = 'https://mod3-jafjdugfba-uc.a.run.app/departamento/4';
     var response = await http.get(url);
     var products = List<Product>();
     if (response.statusCode == 200) {
