@@ -9,8 +9,8 @@ class Body2 extends StatefulWidget {
 }
 
 class _Body2State extends State<Body2> {
-  String dropdownValue='F';
-  String selectedGender='';
+
+  String _gender;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -30,35 +30,31 @@ class _Body2State extends State<Body2> {
                       child: Row(
                         children: [
                           Expanded(flex: 4,child:
-                          TextField(
-                            enabled: false,
-                            cursorColor: Colors.white,
-                            decoration: InputDecoration(
-                              hintText: dropdownValue,
-                              hintStyle: TextStyle(fontSize: 13, color: Colors.grey,),
-                            ),
-                          ),),
-                          Expanded(
-                            flex: 1,
-                            child: DropdownButton<String>(
-                              underline: Container(
-                                height: 1,
-                              ),
-                              style: TextStyle(color: Colors.deepPurple,),
-                              onChanged: (String newValue) {
-                                setState(() {
-                                  dropdownValue = newValue;
-                                });
-                              },
-                              items: <String>['F', 'M']
-                                  .map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                            ),
+                      DropdownButtonFormField(
+                        decoration: InputDecoration(labelText: 'Género'),
+                        value: _gender,
+                        onChanged: (_genderSelected) => setState(() => _gender = _genderSelected),
+                        validator: (value) => value == null ? 'Dato requerido' : null,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text("Masculino"),
+                            value: 1,
                           ),
+                          DropdownMenuItem(
+                            child: Text("Femenino"),
+                            value: 2,
+                          ),
+                          DropdownMenuItem(
+                            child: Text("Otro"),
+                            value: 3,
+                          ),
+                        ],
+                        /*onChanged: (value) {
+          setState(() {
+            _gender = value;
+          });
+        },*/
+                      ),),
                         ],
                       )
                   ),

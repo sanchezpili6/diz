@@ -2,6 +2,7 @@ import 'package:diz/screens/signup/body2.dart';
 import 'package:diz/widgets/commonFieldWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/widgets/background.dart';
+import 'package:intl/intl.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -9,6 +10,25 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  DateTime _birthday;
+
+  TextEditingController dateCtl = TextEditingController();
+  String nombre = '', apellidoPaterno = '', apellidoMaterno = '';
+  onChangedName(String name) {
+    nombre = name;
+    print(nombre);
+  }
+
+  onChangedApellidoPaterno(String name) {
+    apellidoPaterno = name;
+    print(apellidoPaterno);
+  }
+
+  onChangedApellidoMaterno(String name) {
+    apellidoMaterno = name;
+    print(apellidoMaterno);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,7 +47,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: commonFieldWidget(hintText: 'NOMBRE',),
+                  child: commonFieldWidget(
+                    hintText: 'NOMBRE',
+                    onChanged: onChangedName,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -36,7 +59,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: commonFieldWidget(hintText: 'APELLIDO PATERNO',),
+                  child: commonFieldWidget(
+                    hintText: 'APELLIDO PATERNO',
+                    onChanged: onChangedApellidoPaterno,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -45,7 +71,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: commonFieldWidget(hintText: 'APELLIDO MATERNO',),
+                  child: commonFieldWidget(
+                    hintText: 'APELLIDO MATERNO',
+                    onChanged: onChangedApellidoMaterno,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -54,10 +83,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: InputDatePickerFormField(
-                      fieldLabelText: 'FECHA DE NACIMIENTO',
-                      firstDate: DateTime(1900),
-                      lastDate: DateTime(2002)
+                  child: TextFormField(
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return 'Dato requerido';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: dateCtl,
+                    decoration:
+                        InputDecoration(labelText: "Fecha de nacimiento"),
+                    onTap: () async {
+                      _birthday = DateTime(1900);
+                      FocusScope.of(context).requestFocus(new FocusNode());
+
+                      _birthday = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1970),
+                          lastDate: DateTime(2022));
+
+                      dateCtl.text = DateFormat('yyyy-MM-dd').format(_birthday);
+                    },
                   ),
                 ),
                 //REGISTRO
@@ -67,7 +115,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(29),
                     child: FlatButton(
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                       color: Colors.blue,
                       onPressed: () {
                         Navigator.push(
@@ -78,8 +127,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                         );
-
-
                       },
                       child: Text(
                         "SIGUIENTE",
@@ -100,4 +147,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
-
