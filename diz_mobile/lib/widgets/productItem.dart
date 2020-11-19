@@ -16,7 +16,7 @@ class PdtItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .pushNamed(DetailPage.routeName, arguments: pdt.id);
+            .pushNamed(DetailPage.routeName, arguments: pdt);
       },
       child: Padding(
         padding: const EdgeInsets.all(15.0),

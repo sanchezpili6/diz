@@ -1,11 +1,16 @@
-import 'package:diz/screens/home/products.dart';
+
 import 'package:diz/widgets/allProducts.dart';
 import 'package:diz/widgets/departamentosMainPageHorizontalScroll.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/cart_screen.dart';
 
-class MainPage extends StatelessWidget {
+
+
+class MainPage extends StatelessWidget{
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +29,7 @@ class MainPage extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -39,7 +44,7 @@ class MainPage extends StatelessWidget {
           Departamentos(),
           Container(
             height: 600.0,
-            child: AllProducts(),
+            child: AllProducts(cat: 4),
           )
         ],
       ),
