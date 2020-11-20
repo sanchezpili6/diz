@@ -1,15 +1,7 @@
-import 'package:diz/widgets/formulario/mail.dart';
 import 'package:flutter/material.dart';
-import 'package:diz/widgets/formulario/contraseña.dart';
 import 'package:diz/services/updatePass.dart';
-import 'package:diz/widgets/formulario/token.dart';
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: RecContrase(),
-  ));
-}
+import 'package:diz/widgets/background.dart';
+import 'package:diz/screens/login/login_screen.dart';
 
 class RecContrase extends StatefulWidget {
   @override
@@ -17,69 +9,115 @@ class RecContrase extends StatefulWidget {
     return RecContraseState();
   }
 }
-
 class RecContraseState extends State<RecContrase> {
-  String _mail;
-  String _contrasena;
-  String _token;
-  String _uid;
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController dateCtl = TextEditingController();
+  String mail='';
+  String password='';
+  onChangedMail(String newText){
+    mail = newText;
+    print(mail);
+  }
+  onChangedPassword(String newText){
+    password = newText;
+    print(password);
+  }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.black87,
-            elevation: 0,
-            actions: <Widget>[
-            ]),
-        body: new ListView(
+      body: Background(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: new Text('Establecer nueva contraseña',
-                    textAlign: TextAlign.center,
-                    style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    buildMail(_mail),
-                    buildCont(_contrasena),
-                    buildToken(_token),
-                    SizedBox(height: 100),
-                    RaisedButton(
-                      child: Text(
-                        'Siguiente',
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                      onPressed: () {
-                        if (!_formKey.currentState.validate()) {
-                          return;
-                        } else {
-                          _formKey.currentState.save();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return null;
-                              },
-                            ),
-                          );
-                        }
-                        //_formKey.currentState.save();
-                      },
-                    ),
-                  ],
-                ),
+            Text(
+              "    LOGIN",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 25,
               ),
-            )
+            ),
+            /*SvgPicture.asset(
+            "assets/icons/login.svg",
+            height: size.height * 0.42,
+          ),*/
+            SizedBox(height: size.height *0.03),
+            //CORREO
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              width: size.width * 0.8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(29),
+              ),
+              child: TextField(
+                onChanged: onChangedMail,
+                cursorColor: Colors.white,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.account_circle,
+                      color: Colors.blue),
+                  hintText: "   CORREO",
+                ),
+
+              ),
+            ),
+            //CONTRASENA
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              width: size.width * 0.8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(29),
+              ),
+              child: TextField(
+                onChanged: onChangedPassword,
+                obscureText: true,
+                cursorColor: Colors.white,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.lock,
+                      color: Colors.blue),
+                  hintText: "  CONTRASEÑA",
+                ),
+
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 2 ),
+              width: size.width * 0.4 ,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: FlatButton(
+                  padding: EdgeInsets.symmetric(vertical: 10  , horizontal: 4 ),
+                  color: Colors.black54,
+                  onPressed: ()async{
+                    int valid= await makePostRequestUpdate(mail, password);
+                    // if(mail=='jacky@gmail.com' && password=='jacky')
+                        {
+                      print('olvidó su contraseña');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginScreen();
+                          },
+                        ),
+                      );
+                    }
+                  },
+                  child: Text("SIGUIENTE",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white ,
+                      fontSize: 12  ,
+                    ),),
+                ),
+
+              ),
+            ),
+
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

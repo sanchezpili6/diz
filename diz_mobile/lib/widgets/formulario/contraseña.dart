@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:diz/screens/login/recuperar_contraseña.dart';
 Widget buildCont(_contrasena) {
   return TextFormField(
     decoration: InputDecoration(labelText: 'Contraseña'),
@@ -13,6 +13,7 @@ Widget buildCont(_contrasena) {
     },
     onSaved: (String value) {
       _contrasena = value;
+      print(_contrasena);
     },
   );
 }

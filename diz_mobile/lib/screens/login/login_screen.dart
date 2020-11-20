@@ -103,6 +103,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     }
+                    else if(valid==200)
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return RecContrase();
+                          },
+                        ),
+                      );
+                    }
                     else{
                       showDialog(
                           context: context,
