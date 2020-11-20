@@ -1,4 +1,5 @@
 import 'package:diz/models/cart.dart';
+import 'package:diz/screens/payment/bill.dart';
 import 'package:diz/screens/payment/credit_card.dart';
 import 'package:diz/services/cart.dart';
 import 'package:diz/widgets/cart_item.dart';
@@ -15,6 +16,7 @@ class CardPyScreen extends StatelessWidget {
   final vencY;
 
   CardPyScreen({this.numeroT, this.vencM, this.vencY});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +105,16 @@ class CardPyScreen extends StatelessWidget {
                       "Generar factura",
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () => null,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return BillScreen();
+                          },
+                        ),
+                      );
+                    },
                   ),
                 )
               ])
