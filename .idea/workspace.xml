@@ -22,18 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="Ya hace registro con MDM y hashea la contrasena:) hice cambios en carpeta sign Up y agregué servicios, registro.dart, RegisterUser.dart, hashPassword.dart">
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/checksPassword.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/hashPassword.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/registro.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/department/department.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/department/department.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/home/main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/home/main_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/body2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/body2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/signup_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/commonFieldWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/commonFieldWidget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605812551887</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ya hace registro con MDM y hashea la contrasena:) hice cambios en carpeta sign Up y agregué servicios, registro.dart, RegisterUser.dart, hashPassword.dart">
+      <created>1605843767215</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605843767215</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,33 +223,33 @@
     </state>
     <state x="77" y="76" width="1383" height="673" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605810047355" />
     <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
-    <state x="115" y="0" key="CommitChangelistDialog2" timestamp="1605843745237">
+    <state x="115" y="0" key="CommitChangelistDialog2" timestamp="1605843764314">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="115" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605843745237" />
+    <state x="115" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605843764314" />
     <state x="743" y="279" key="FileChooserDialogImpl" timestamp="1603694407528">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="743" y="279" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1603694407528" />
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1605843566092">
+    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1605845260395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605843566092" />
+    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605845260395" />
     <state width="906" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1605843566091">
+    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1605845260395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605843566091" />
+    <state width="1491" height="248" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605845260395" />
     <state width="906" height="277" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1605843566091">
+    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1605845260395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605843566091" />
+    <state width="1491" height="248" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605845260395" />
     <state width="906" height="277" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847176" />
-    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1605843566091">
+    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1605845260395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605843566091" />
+    <state width="1491" height="248" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605845260395" />
     <state width="906" height="277" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
     <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1605724450804">
       <screen x="0" y="0" width="1536" height="824" />
@@ -263,10 +263,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="457" y="156" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412150" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605810676525">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605843771781">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605810676525" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605843771781" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604116165085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

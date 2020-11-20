@@ -14,10 +14,10 @@ class MainPage extends StatelessWidget{
 
         elevation: 0,
         actions: <Widget>[
-          IconButton(
+          /*IconButton(
             icon: Icon(Icons.search),
             onPressed: (){} ,
-          ),
+          ),*/
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: ()=>Navigator.of(context).pushNamed(CartScreen.routeName),
