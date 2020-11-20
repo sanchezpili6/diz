@@ -1,5 +1,7 @@
 import 'package:diz/constants.dart';
 import 'package:diz/screens/department/department.dart';
+import 'package:diz/screens/myAccount/myAccountScreen.dart';
+import 'package:diz/services/registro.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
 
@@ -29,7 +31,14 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Mi cuenta'),
-              onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()),)}
+              onTap: () => {
+              if(logged==false||logged==null){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()),)
+              }
+              else{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyAccountScreen()),)
+              }
+            }
           ),
           ExpansionTile(
             leading: Icon(Icons.shopping_cart),
@@ -80,7 +89,9 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: () => {Navigator.push(
+            onTap: () => {
+              logged=false,
+              Navigator.push(
             context,
             MaterialPageRoute(
             builder: (context) {
