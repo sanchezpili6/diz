@@ -1,22 +1,17 @@
-
 import 'package:diz/widgets/allProducts.dart';
 import 'package:diz/widgets/departamentosMainPageHorizontalScroll.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/cart_screen.dart';
 
-
-
 class MainPage extends StatelessWidget{
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.black87,
+
         elevation: 0,
         actions: <Widget>[
           IconButton(
