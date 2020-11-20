@@ -2,6 +2,7 @@ import 'package:diz/screens/payment/user_data.dart';
 import 'package:diz/services/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/models/ordersK.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../models/cart.dart';
 import '../widgets/cart_item.dart';
@@ -14,9 +15,12 @@ class CartScreen extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text(
-          'My Cart',
-          style: TextStyle(fontSize: 30, color: Theme.of(context).accentColor),
+          'Mi Carrito',
+          style: GoogleFonts.sanchez(
+              fontSize: 25, color: Colors.white
+          )
         ),
       ),
       body: Column(
@@ -60,9 +64,37 @@ class _CheckoutButtonState extends State<CheckoutButton> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      child: Text('Checkout'),
+      color: Colors.blue,
+      child: Text(
+          'Checkout',
+          style: GoogleFonts.sanchez(
+            fontWeight: FontWeight.bold,
+              fontSize: 25, color: Colors.white
+          )
+      ),
       onPressed: () {
         getCart(widget.cart, context);
+        print(widget.cart.items.length);
+        if(widget.cart.items.length==0){
+          showDialog(
+              context: context,
+              builder: (buildcontext) {
+                return AlertDialog(
+                  title: Text("CARRITO VACÍO:("),
+                  content: Text("Regresa a disfrutar de la experiencia de Diz"),
+                  actions: <Widget>[
+                    RaisedButton(
+                      color: Colors.blue,
+                      child: Text("REGRESAR", style: TextStyle(color: Colors.white),),
+                      onPressed: (){
+                        Navigator.of(context).pop(); Navigator.of(context).pop();},
+                    )
+                  ],
+                );
+              }
+          );
+        }
+        else{
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -71,6 +103,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
             },
           ),
         );
+        }
       },
       /*widget.cart.totalAmount <= 0
           ? null

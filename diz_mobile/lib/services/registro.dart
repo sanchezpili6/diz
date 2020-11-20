@@ -3,7 +3,12 @@ import 'package:http/http.dart' as http;
 
 String correo='', contrasena='', telefono='', nombrePila='', apellidoP='', apellidoM='', genero='', uid='';
 DateTime cumple;
-bool logged;
+bool logged, isDeleted;
+String calle='', colonia='', ciudad='',cp='',estado='', entreCalles='';
+bool isMain;
+List<ClienteInfo> clienteInfo=[];
+List<dynamic> compra=[];
+
 Future<RegisterUser> registerUser(user) async {
   String url = 'http://35.239.19.77:8000/clients/';
   Map<String, String> headers = {"Content-type": "application/json"};

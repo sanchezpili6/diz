@@ -1,5 +1,6 @@
 import 'package:diz/constants.dart';
 import 'package:diz/screens/department/department.dart';
+import 'package:diz/screens/home/main_page.dart';
 import 'package:diz/screens/myAccount/myAccountScreen.dart';
 import 'package:diz/services/registro.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,14 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.input),
             title: Text('Inicio'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return MainPage();
+                },
+              ),
+            ),},
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
@@ -81,16 +89,16 @@ class NavDrawer extends StatelessWidget {
               ),
             ],
           ),
-          ListTile(
+          /*ListTile(
             leading: Icon(Icons.star),
             title: Text('Promociones'),
             onTap: () => {Navigator.of(context).pop()},
-          ),
+          ),*/
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: () => {
-              logged=false,
+              logged=false, correo='', contrasena='', telefono='', nombrePila='', apellidoP='', apellidoM='', genero='', uid='',cumple=null,
               Navigator.push(
             context,
             MaterialPageRoute(

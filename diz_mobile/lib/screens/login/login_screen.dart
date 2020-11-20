@@ -90,6 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   color: Colors.blue,
                   onPressed: ()async{
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Center(child: CircularProgressIndicator(),);
+                        });
                     int valid= await makePostRequest(mail, password);
                    if(valid==201)
                     {
@@ -112,7 +117,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               actions: <Widget>[
                                 RaisedButton(
                                   child: Text("CERRAR", style: TextStyle(color: Colors.white),),
-                                  onPressed: (){ Navigator.of(context).pop(); },
+                                  onPressed: (){
+                                    Navigator.of(context).pop(); Navigator.of(context).pop();},
                                 )
                               ],
                             );
