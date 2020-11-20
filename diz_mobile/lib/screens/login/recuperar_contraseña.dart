@@ -1,6 +1,8 @@
 import 'package:diz/widgets/formulario/mail.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/widgets/formulario/contraseña.dart';
+import 'package:diz/services/updatePass.dart';
+import 'package:diz/widgets/formulario/token.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -19,6 +21,8 @@ class RecContrase extends StatefulWidget {
 class RecContraseState extends State<RecContrase> {
   String _mail;
   String _contrasena;
+  String _token;
+  String _uid;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController dateCtl = TextEditingController();
 
@@ -47,6 +51,7 @@ class RecContraseState extends State<RecContrase> {
                   children: <Widget>[
                     buildMail(_mail),
                     buildCont(_contrasena),
+                    buildToken(_token),
                     SizedBox(height: 100),
                     RaisedButton(
                       child: Text(
@@ -69,7 +74,7 @@ class RecContraseState extends State<RecContrase> {
                         }
                         //_formKey.currentState.save();
                       },
-                    )
+                    ),
                   ],
                 ),
               ),

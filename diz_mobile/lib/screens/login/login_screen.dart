@@ -1,5 +1,6 @@
 import 'package:diz/screens/home/main_page.dart';
 import 'package:diz/services/loginUser.dart';
+import 'package:diz/services/contraseñaTemporal.dart';
 import 'package:diz/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/login/recuperar_contraseña.dart';
@@ -139,7 +140,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: FlatButton(
                   padding: EdgeInsets.symmetric(vertical: 10  , horizontal: 4 ),
                   color: Colors.black54,
-                  onPressed: (){
+                  onPressed: ()async{
+                    int valid= await makePostRequestContT(mail);
                     // if(mail=='jacky@gmail.com' && password=='jacky')
                     {
                       print('olvidó su contraseña');
