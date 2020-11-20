@@ -93,7 +93,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     int valid= await makePostRequest(mail, password);
                    if(valid==201)
                     {
-                      print('Contrasena valida');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
