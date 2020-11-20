@@ -35,16 +35,25 @@ class MainPage extends StatelessWidget{
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               child: Text(
-                "Categorías",
+                "Productos",
                 style: Theme.of(context)
                     .textTheme
                     .headline5
                     .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
-            Departamentos(),
             Container(
-              child: AllProducts(cat: 4),
+              child: Column(
+                children: [
+                  AllProducts(cat: 1),
+                  AllProducts(cat: 2),
+                  AllProducts(cat: 3),
+                  AllProducts(cat: 4),
+                  AllProducts(cat: 5),
+                  AllProducts(cat: 6),
+                  AllProducts(cat: 7),
+                ],
+              ),
             ),
           ],
         ),
