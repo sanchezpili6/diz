@@ -16,6 +16,7 @@ makePostRequest(mail, password) async {
   if(statusCode==201){
     uid=user['uid'];
     logged=true;
+    correo=mail;
     print(uid+'Exito');
   }
   return statusCode;

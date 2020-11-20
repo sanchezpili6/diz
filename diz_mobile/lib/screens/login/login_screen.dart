@@ -1,9 +1,9 @@
 import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/services/contrasenaTemporal.dart';
 import 'package:diz/services/loginUser.dart';
-import 'package:diz/services/contraseñaTemporal.dart';
 import 'package:diz/widgets/background.dart';
 import 'package:flutter/material.dart';
-import 'package:diz/screens/login/recuperar_contraseña.dart';
+import 'package:diz/screens/login/recuperar_contrasena.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -91,45 +91,64 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   color: Colors.blue,
                   onPressed: ()async{
-                    int valid= await makePostRequest(mail, password);
-                   if(valid==201)
-                    {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return MainPage();
-                          },
-                        ),
-                      );
-                    }
-                    else if(valid==200)
-                    {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return RecContrase();
-                          },
-                        ),
-                      );
-                    }
-                    else{
+                    if(mail==''||password==''){
                       showDialog(
                           context: context,
                           builder: (buildcontext) {
                             return AlertDialog(
-                              title: Text("ERROR"),
-                              content: Text("Usuario o contraseña incorrectos"),
+                              title: Text("Falta llenar un campo"),
+                              content:
+                              Text("Favor de llenar todos los campos"),
                               actions: <Widget>[
                                 RaisedButton(
-                                  child: Text("CERRAR", style: TextStyle(color: Colors.white),),
-                                  onPressed: (){ Navigator.of(context).pop(); },
+                                  child: Text(
+                                    "CERRAR",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
                                 )
                               ],
                             );
-                          }
-                      );
+                          });
+                    }
+                    else{
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Center(child: CircularProgressIndicator(),);
+                          });
+                      int valid= await makePostRequest(mail, password);
+                      if(valid==201)
+                      {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainPage();
+                            },
+                          ),
+                        );
+                      }
+                      else{
+                        showDialog(
+                            context: context,
+                            builder: (buildcontext) {
+                              return AlertDialog(
+                                title: Text("ERROR"),
+                                content: Text("Usuario o contraseña incorrectos"),
+                                actions: <Widget>[
+                                  RaisedButton(
+                                    child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                    onPressed: (){
+                                      Navigator.of(context).pop(); Navigator.of(context).pop();},
+                                  )
+                                ],
+                              );
+                            }
+                        );
+                      }
                     }
                   },
                   child: Text("INICIAR SESIÓN",
@@ -153,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: ()async{
                     int valid= await makePostRequestContT(mail);
                     // if(mail=='jacky@gmail.com' && password=='jacky')
-                    {
+                        {
                       print('olvidó su contraseña');
                       Navigator.push(
                         context,
