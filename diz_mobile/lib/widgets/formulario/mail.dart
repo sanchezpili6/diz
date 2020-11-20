@@ -19,6 +19,7 @@ Widget buildMail(_mail) {
     },
     onSaved: (String value) {
       _mail = value;
+      print(_mail);
     },
   );
 }
