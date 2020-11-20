@@ -1,4 +1,4 @@
-import 'package:diz/screens/login/recuperar_contraseña.dart';
+import 'package:diz/screens/login/recuperar_contrasena.dart';
 import 'package:diz/screens/home/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
