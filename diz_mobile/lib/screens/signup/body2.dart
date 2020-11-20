@@ -1,4 +1,8 @@
 import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/services/RegisterUser.dart';
+import 'package:diz/services/checksPassword.dart';
+import 'package:diz/services/hashPassword.dart';
+import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/commonFieldWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/widgets/background.dart';
@@ -9,8 +13,23 @@ class Body2 extends StatefulWidget {
 }
 
 class _Body2State extends State<Body2> {
+  RegisterUser _user;
+  String _gender, password = '', phone = '', confirmedPassword;
+  onChangedContrasena(String value) {
+    password = value;
+    print(password);
+  }
 
-  String _gender;
+  onChangedConfirmedContrasena(String value) {
+    confirmedPassword = value;
+    print(confirmedPassword);
+  }
+
+  onChangedPhone(String value) {
+    phone = value;
+    print(phone);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,40 +45,36 @@ class _Body2State extends State<Body2> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   width: size.width * 0.8,
-                  child:  Expanded(
+                  child: Expanded(
                       child: Row(
-                        children: [
-                          Expanded(flex: 4,child:
-                      DropdownButtonFormField(
-                        decoration: InputDecoration(labelText: 'Género'),
-                        value: _gender,
-                        onChanged: (_genderSelected) => setState(() => _gender = _genderSelected),
-                        validator: (value) => value == null ? 'Dato requerido' : null,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("Masculino"),
-                            value: 1,
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Femenino"),
-                            value: 2,
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Otro"),
-                            value: 3,
-                          ),
-                        ],
-                        /*onChanged: (value) {
-          setState(() {
-            _gender = value;
-          });
-        },*/
-                      ),),
-                        ],
-                      )
-                  ),
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: DropdownButtonFormField(
+                          decoration: InputDecoration(labelText: 'Género'),
+                          value: _gender,
+                          onChanged: (_genderSelected) => setState(() {
+                            _gender = _genderSelected;
+                          }),
+                          items: [
+                            DropdownMenuItem(
+                              child: Text("Masculino"),
+                              value: 'H',
+                            ),
+                            DropdownMenuItem(
+                              child: Text("Femenino"),
+                              value: 'M',
+                            ),
+                            DropdownMenuItem(
+                              child: Text("Otro"),
+                              value: 'O',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
                 ),
-
 
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -68,9 +83,11 @@ class _Body2State extends State<Body2> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child:commonFieldWidget(hintText: 'TELÉFONO',),
+                  child: commonFieldWidget(
+                    hintText: 'TELÉFONO',
+                    onChanged: onChangedPhone,
+                  ),
                 ),
-
 
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -79,7 +96,8 @@ class _Body2State extends State<Body2> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: commonFieldWidget(hintText: 'CONTRASEÑA',),
+                  child: commonFieldWidgetPassword(
+                      hintText: 'CONTRASEÑA', onChanged: onChangedContrasena),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -88,7 +106,10 @@ class _Body2State extends State<Body2> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: commonFieldWidget(hintText: 'CONFIRMAR CONTRASEÑA',),
+                  child: commonFieldWidgetPassword(
+                    hintText: 'CONFIRMAR CONTRASEÑA',
+                    onChanged: onChangedConfirmedContrasena,
+                  ),
                 ),
                 //REGISTRO
                 Container(
@@ -99,16 +120,6 @@ class _Body2State extends State<Body2> {
                     child: FlatButton(
                       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                       color: Colors.blue,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return MainPage();
-                            },
-                          ),
-                        );
-                      },
                       child: Text(
                         "REGISTRARSE",
                         style: TextStyle(
@@ -117,6 +128,126 @@ class _Body2State extends State<Body2> {
                           fontSize: 15,
                         ),
                       ),
+                      onPressed: () async{
+                        //SI ESTAN VACIOS
+                        //print(_gender);print(phone);print(password);print(confirmedPassword);
+                        if (confirmedPassword == '' || password == '' || _gender == '' || phone == '') {
+                          showDialog(
+                              context: context,
+                              builder: (buildcontext) {
+                                return AlertDialog(
+                                  title: Text("Falta llenar un campo"),
+                                  content:
+                                      Text("Favor de llenar todos los campos"),
+                                  actions: <Widget>[
+                                    RaisedButton(
+                                      child: Text(
+                                        "CERRAR",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        } else {
+                          bool check=isPasswordCompliant(password);
+                          if (check==true) {
+                            if (confirmedPassword == password) {
+                              //LAS CONTRASENAS COINCIDEN
+                              telefono=phone;
+                              genero=_gender;
+                              //SE HASHEA EL PASSWORD
+                              contrasena= await hashPaswordRequest(password);
+                              print(contrasena);
+                              RegisterUser user = RegisterUser(contrasena: contrasena, cliente:Cliente(nombrePila: nombrePila, apellidoMat: apellidoM, apellidoPat: apellidoP, genero: genero, fechaNac: cumple), clienteInfo:  ClienteInfo(correo: correo, telefono: phone));
+                              print(registerUserToJson(user));
+                              final RegisterUser newUser = await registerUser(registerUserToJson(user));
+                              setState(() {
+                                _user = newUser;
+                              });
+                              if (_user != null) {
+                                print("Se registro con exito");
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return MainPage();
+                                  },
+                                ),
+                              );
+                              } else {
+                                //print("Registro fallido");
+                                showDialog(
+                                    context: context,
+                                    builder: (buildcontext) {
+                                      return AlertDialog(
+                                        title: Text("Registro fallido"),
+                                        content: Text("Inténtelo nuevamente"),
+                                        actions: <Widget>[
+                                          RaisedButton(
+                                            child: Text(
+                                              "CERRAR",
+                                              style: TextStyle(color: Colors.white),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          )
+                                        ],
+                                      );
+                                    });
+                              }
+                            }
+                            //ALERT LAS CONTRASENAS NO COINCIDEN
+                            else {
+                              showDialog(
+                                  context: context,
+                                  builder: (buildcontext) {
+                                    return AlertDialog(
+                                      content: Text(
+                                          "Las contraseñas no coinciden, inténtelo de nuevo"),
+                                      actions: <Widget>[
+                                        RaisedButton(
+                                          child: Text(
+                                            "CERRAR",
+                                            style: TextStyle(color: Colors.white),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  });
+                            }
+                          }
+                          //ALERT LA CONTRASENA NO CUMPLE CON SEGURIDAD
+                          else {
+                            showDialog(
+                                context: context,
+                                builder: (buildcontext) {
+                                  return AlertDialog(
+                                    content: Text(
+                                        "La contraseña tiene que ser de 8 caracteres mínimo, 1 mayúscula, 1 minúscula, 1 caractér especial y 1 número"),
+                                    actions: <Widget>[
+                                      RaisedButton(
+                                        child: Text(
+                                          "CERRAR",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  );
+                                });
+                          }
+                        }
+                      },
                     ),
                   ),
                 ),
@@ -128,6 +259,3 @@ class _Body2State extends State<Body2> {
     );
   }
 }
-
-
-

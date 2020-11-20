@@ -1,6 +1,6 @@
 import 'package:diz/screens/signup/body2.dart';
+import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/commonFieldWidget.dart';
-import 'package:diz/widgets/formulario/mail.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/widgets/background.dart';
 import 'package:intl/intl.dart';
@@ -13,7 +13,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   DateTime _birthday;
   String mail;
-
+  TextEditingController mailController = TextEditingController();
   TextEditingController dateCtl = TextEditingController();
   String nombre = '', apellidoPaterno = '', apellidoMaterno = '';
   onChangedName(String name) {
@@ -30,7 +30,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
     apellidoMaterno = name;
     print(apellidoMaterno);
   }
-
+  Widget buildMail() {
+    return TextFormField(
+      controller: mailController,
+      decoration: InputDecoration(labelText: 'Correo'),
+      maxLength: 30,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Correo requerido';
+        }
+        if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(value)) {
+          // ignore: missing_return, missing_return
+          return 'Correo invalido';
+        } else {
+          return null;
+          //return  mail=mailController.text;
+        }
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: buildMail(mail),
+                  child: buildMail(),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
@@ -130,14 +150,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                       color: Colors.blue,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Body2();
-                            },
-                          ),
-                        );
+                        print(mailController.text);print(nombre);print(apellidoPaterno); print(apellidoMaterno);
+                        //SI ESTÁN VACIOS NO SE GUARDA
+                        if(mailController.text==''||nombre==''||apellidoPaterno==''||apellidoMaterno==''){
+                            showDialog(
+                              context: context,
+                              builder: (buildcontext) {
+                                return AlertDialog(
+                                  title: Text("Falta llenar un campo"),
+                                  content: Text("Favor de llenar todos los campos"),
+                                  actions: <Widget>[
+                                    RaisedButton(
+                                      child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                      onPressed: (){ Navigator.of(context).pop(); },
+                                    )
+                                  ],
+                                );
+                              }
+                          );
+                        }
+                        else{
+                          correo=mailController.text;
+                          nombrePila=nombre;
+                          apellidoP=apellidoPaterno;
+                          apellidoM=apellidoMaterno;
+                          try{
+                            cumple=DateTime.parse(dateCtl.text);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Body2();
+                                },
+                              ),
+                            );
+                            }
+                         catch(e){
+                           showDialog(
+                               context: context,
+                               builder: (buildcontext) {
+                                 return AlertDialog(
+                                   content: Text("Por favor ingrese su fecha de nacimiento"),
+                                   actions: <Widget>[
+                                     RaisedButton(
+                                       child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                       onPressed: (){ Navigator.of(context).pop(); },
+                                     )
+                                   ],
+                                 );
+                               }
+                           );
+                         }
+                        }
                       },
                       child: Text(
                         "SIGUIENTE",
