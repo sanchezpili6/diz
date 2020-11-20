@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 
-Widget buildNumber(_number) {
+Widget buildNumberUnd(_number, _numberLabel) {
   return TextFormField(
-    decoration: InputDecoration(labelText: 'Numero telefonico'),
+    decoration: InputDecoration(labelText: _numberLabel),
     keyboardType: TextInputType.phone,
-    maxLength: 10,
     validator: (String value) {
       if (value.isEmpty) {
         return 'Dato requerido';
-      }
-      if (value.length < 10) {
-        return "Numero invalido";
       } else {
         return null;
       }

@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:diz/widgets/formulario/birthday.dart';
 import 'package:diz/widgets/formulario/mail.dart';
 import 'package:diz/widgets/formulario/name.dart';
 import 'package:diz/screens/payment/delivery.dart';
 import 'package:diz/widgets/formulario/phoneNumber.dart';
+import 'package:diz/widgets/formulario/street.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import '../cart_screen.dart';
@@ -29,6 +32,8 @@ class FormScreenState extends State<FormScreen> {
   String _mail;
   String _number;
   String _gender;
+  String _cp;
+
   //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController dateCtl = TextEditingController();
@@ -41,24 +46,33 @@ class FormScreenState extends State<FormScreen> {
       items: [
         DropdownMenuItem(
           child: Text("H"),
-          value: 1,
+          value: 'H',
         ),
         DropdownMenuItem(
           child: Text("M"),
-          value: 2,
+          value: 'M',
         ),
         DropdownMenuItem(
           child: Text("O"),
-          value: 3,
+          value: 'O',
         ),
       ],
-      /*onChanged: (value) {
-          setState(() {
-            _gender = value;
-          });
-        },*/
     );
   }
+
+  /*_makeGetRequest() async {
+    // make GET request
+    String url = 'http://35.239.19.77:8000/directions/get?cp=50210';
+    Response response = await get(url);
+    // sample info available in response
+    //int statusCode = response.statusCode;
+    //Map<String, String> headers = response.headers;
+    //String contentType = headers['application/json'];
+    String json = response.body;
+    Map<String, dynamic> user = jsonDecode(json);
+    print(user);
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,17 +113,19 @@ class FormScreenState extends State<FormScreen> {
                     buildBirthday(dateCtl, _birthday, context),
                     buildMail(_mail),
                     buildNumber(_number),
+                    //buildStreet(_cp, "Codigo postal"),
                     SizedBox(height: 100),
                     RaisedButton(
                       child: Text(
                         'Siguiente',
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (!_formKey.currentState.validate()) {
                           return;
                         } else {
                           _formKey.currentState.save();
+                          //await _makeGetRequest();
                           Navigator.push(
                             context,
                             MaterialPageRoute(

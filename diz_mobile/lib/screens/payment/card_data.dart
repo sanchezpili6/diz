@@ -226,7 +226,7 @@ class CardScreenState extends State<CardScreen> {
                             _user = user;
                           });
                           if (_user != null) {
-                            //print("Tarjeta valida");
+                            print("Tarjeta valida");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -240,7 +240,7 @@ class CardScreenState extends State<CardScreen> {
                               ),
                             );
                           } else {
-                            //print("Tarjeta invalida");
+                            print("Tarjeta invalida");
                             showDialog(
                                 context: context,
                                 builder: (buildcontext) {
