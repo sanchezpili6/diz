@@ -7,6 +7,27 @@ import 'package:flutter/material.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
 
 class NavDrawer extends StatelessWidget {
+  /*makeGetRequestUserInfo(id) async {
+    // make GET request
+    print(id);
+    //String url = 'http://35.239.19.77:8000/clients/$id';
+    Response response = await get('http://35.239.19.77:8000/clients/63');
+    // sample info available in response
+    //int statusCode = response.statusCode;
+    print(response.statusCode);
+    //302 bueno
+    /*if(response.statusCode==302){
+      String json = response.body;
+      Map<String, dynamic> user = jsonDecode(json);
+      print(user);
+      return user;
+    }
+    else{
+      return null;
+    }*/
+  }*/
+
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -39,12 +60,14 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Mi cuenta'),
-              onTap: () => {
+              //SI NO HA INICIADO SESION
+              onTap:()async {
               if(logged==false||logged==null){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()),)
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
               }
+              //SI YA INICIO SESION
               else{
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyAccountScreen()),)
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyAccountScreen()),);
               }
             }
           ),

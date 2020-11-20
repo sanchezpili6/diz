@@ -22,13 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/deleteClient.dart" afterDir="false" />
+    <list default="true" id="2ce4b330-06f1-4c41-a57d-7a185e6c8b46" name="Default Changelist" comment="Arregle algunos bugs de registro login y estados del dropdown">
+      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/cardInfoScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/deliveryInfoScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/infoScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/cart_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/cart_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/login/login_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/myAccountScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/myAccountScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/services/loginUser.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/services/loginUser.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/delivery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/delivery.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/body2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/signup/body2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diz_mobile/lib/services/registro.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/services/registro.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" afterDir="false" />
     </list>
@@ -215,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605864625480</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="checar carrito vacío, delete Account con MDM, circular progress dialog en login">
+      <created>1605894118897</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605894118897</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +258,10 @@
     <MESSAGE value="SSO ya funciona:D yaaaas!" />
     <MESSAGE value="createdMyAccountScreen, gets uid in Login:D" />
     <MESSAGE value="createdMyAccountScreen, gets uid in Login:D last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="createdMyAccountScreen, gets uid in Login:D last commit" />
+    <MESSAGE value="checar carrito vacío, delete Account con MDM, circular progress dialog en login" />
+    <MESSAGE value="correcciones en login, nuevas pantallas para poder actualizar Datos." />
+    <MESSAGE value="Arregle algunos bugs de registro login y estados del dropdown" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arregle algunos bugs de registro login y estados del dropdown" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Project_Structure" timestamp="1604116131613">
@@ -275,38 +289,38 @@
     </state>
     <state x="77" y="76" width="1383" height="673" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605810047355" />
     <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
-    <state x="301" y="0" key="CommitChangelistDialog2" timestamp="1605864621502">
+    <state x="301" y="0" key="CommitChangelistDialog2" timestamp="1605906610179">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="301" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605864621502" />
+    <state x="301" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605906610179" />
     <state x="743" y="279" key="FileChooserDialogImpl" timestamp="1603694407528">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="743" y="279" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1603694407528" />
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1605894017442">
+    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1605906610266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605894017442" />
+    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605906610266" />
     <state width="906" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1605894017442">
+    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1605906610265">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605894017442" />
+    <state width="1491" height="248" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605906610265" />
     <state width="906" height="277" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1605894017442">
+    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1605906610265">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605894017442" />
+    <state width="1491" height="248" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605906610265" />
     <state width="906" height="277" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847176" />
-    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1605894017442">
+    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1605906610265">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605894017442" />
+    <state width="1491" height="248" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605906610265" />
     <state width="906" height="277" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1603695847177" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1605724450804">
+    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1605894174690">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1605724450804" />
+    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1605894174690" />
     <state x="621" y="115" key="RollbackChangesDialog" timestamp="1605122236504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -315,10 +329,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="457" y="156" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412150" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605864629653">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605894122406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605864629653" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605894122406" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604116165085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -327,10 +341,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604116837691" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605845819649">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605894146519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605845819649" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605894146519" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1605885633984">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

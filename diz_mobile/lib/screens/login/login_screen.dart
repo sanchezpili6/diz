@@ -90,40 +90,64 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   color: Colors.blue,
                   onPressed: ()async{
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Center(child: CircularProgressIndicator(),);
-                        });
-                    int valid= await makePostRequest(mail, password);
-                   if(valid==201)
-                    {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return MainPage();
-                          },
-                        ),
-                      );
-                    }
-                    else{
+                    if(mail==''||password==''){
                       showDialog(
                           context: context,
                           builder: (buildcontext) {
                             return AlertDialog(
-                              title: Text("ERROR"),
-                              content: Text("Usuario o contraseña incorrectos"),
+                              title: Text("Falta llenar un campo"),
+                              content:
+                              Text("Favor de llenar todos los campos"),
                               actions: <Widget>[
                                 RaisedButton(
-                                  child: Text("CERRAR", style: TextStyle(color: Colors.white),),
-                                  onPressed: (){
-                                    Navigator.of(context).pop(); Navigator.of(context).pop();},
+                                  child: Text(
+                                    "CERRAR",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
                                 )
                               ],
                             );
-                          }
-                      );
+                          });
+                    }
+                    else{
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Center(child: CircularProgressIndicator(),);
+                          });
+                      int valid= await makePostRequest(mail, password);
+                      if(valid==201)
+                      {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainPage();
+                            },
+                          ),
+                        );
+                      }
+                      else{
+                        showDialog(
+                            context: context,
+                            builder: (buildcontext) {
+                              return AlertDialog(
+                                title: Text("ERROR"),
+                                content: Text("Usuario o contraseña incorrectos"),
+                                actions: <Widget>[
+                                  RaisedButton(
+                                    child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                    onPressed: (){
+                                      Navigator.of(context).pop(); Navigator.of(context).pop();},
+                                  )
+                                ],
+                              );
+                            }
+                        );
+                      }
                     }
                   },
                   child: Text("INICIAR SESIÓN",

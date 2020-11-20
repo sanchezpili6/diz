@@ -1,30 +1,17 @@
-import 'dart:convert';
-
-import 'package:diz/screens/payment/card_data.dart';
-import 'package:diz/services/codezip.dart';
-import 'package:diz/services/http_service.dart';
-import 'package:diz/services/post_model.dart';
+import 'package:diz/screens/cart_screen.dart';
+import 'package:diz/screens/myAccount/cardInfoScreen.dart';
+import 'package:diz/widgets/formulario/mail.dart';
+import 'package:diz/widgets/formulario/phoneNumber.dart';
 import 'package:diz/widgets/formulario/street.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
-import '../cart_screen.dart';
-import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: EntregaScreen(),
-  ));
-}
-
-class EntregaScreen extends StatefulWidget {
+class DeliveryInfoScreen extends StatefulWidget {
   @override
-  EntregaScreenState createState() => EntregaScreenState();
+  _DeliveryInfoScreenState createState() => _DeliveryInfoScreenState();
 }
 
-class EntregaScreenState extends State<EntregaScreen> {
-  Future<Album> futureAlbum;
-
+class _DeliveryInfoScreenState extends State<DeliveryInfoScreen> {
   String _street;
   String _numCasa;
   String _colonia;
@@ -32,14 +19,14 @@ class EntregaScreenState extends State<EntregaScreen> {
   String _cp;
   String _estado;
   String _calles;
+  String _mail;
+  String _number;
   final myController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final HttpService httpService = HttpService();
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
   }
 
   Widget _buildEstado() {
@@ -186,6 +173,8 @@ class EntregaScreenState extends State<EntregaScreen> {
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -205,26 +194,14 @@ class EntregaScreenState extends State<EntregaScreen> {
               ),
             ]),
         body:
-            /*FutureBuilder<Album>(
-          future: futureAlbum,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data.codigo);
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            // By default, show a loading spinner.
-            return CircularProgressIndicator();
-          },
-        ));*/
-            new ListView(
+        new ListView(
           children: <Widget>[
             new Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: new Text('Dirección de entrega',
                     textAlign: TextAlign.center,
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
             Container(),
             Container(
               margin: EdgeInsets.all(20),
@@ -233,9 +210,10 @@ class EntregaScreenState extends State<EntregaScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    buildMail(_mail),
+                    buildNumber(_number),
                     buildStreet(_cp, 'Código Postal'),
                     buildStreet(_street, 'Calle'),
-                    buildStreet(_numCasa, 'No. de casa'),
                     buildStreet(_calles, 'Calles contiguas'),
                     buildStreet(_colonia, 'Colonia'),
                     buildStreet(_ciudad, 'Ciudad'),
@@ -251,11 +229,12 @@ class EntregaScreenState extends State<EntregaScreen> {
                           return;
                         } else {
                           _formKey.currentState.save();
+                          print(_cp); print(_ciudad); print(_colonia);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return CardScreen();
+                                return CardInfoScreen();
                               },
                             ),
                           );

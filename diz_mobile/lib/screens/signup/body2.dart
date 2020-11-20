@@ -2,6 +2,7 @@ import 'package:diz/screens/home/main_page.dart';
 import 'package:diz/services/RegisterUser.dart';
 import 'package:diz/services/checksPassword.dart';
 import 'package:diz/services/hashPassword.dart';
+import 'package:diz/services/loginUser.dart';
 import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/commonFieldWidget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ class Body2 extends StatefulWidget {
 }
 
 class _Body2State extends State<Body2> {
-  RegisterUser _user;
   String _gender, password = '', phone = '', confirmedPassword;
   onChangedContrasena(String value) {
     password = value;
@@ -164,21 +164,12 @@ class _Body2State extends State<Body2> {
                               print(contrasena);
                               RegisterUser user = RegisterUser(contrasena: contrasena, cliente:Cliente(nombrePila: nombrePila, apellidoMat: apellidoM, apellidoPat: apellidoP, genero: genero, fechaNac: cumple), clienteInfo:  ClienteInfo(correo: correo, telefono: phone));
                               print(registerUserToJson(user));
-                              final RegisterUser newUser = await registerUser(registerUserToJson(user));
-                              setState(() {
+                              var newUser = await registerUser(registerUserToJson(user));
+                              /*setState(() {
                                 _user = newUser;
-                              });
-                              if (_user != null) {
-                                print("Se registro con exito");
-                                Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return MainPage();
-                                  },
-                                ),
-                              );
-                              } else {
+                              });*/
+                              if (newUser != 201) {
+                                print(newUser.toString()+' desde body');
                                 //print("Registro fallido");
                                 showDialog(
                                     context: context,
@@ -199,6 +190,12 @@ class _Body2State extends State<Body2> {
                                         ],
                                       );
                                     });
+                              }
+                              else {
+                                print(newUser.toString()+' desde Else');
+                                logged=true;
+                                await makePostRequest(correo, contrasena);
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {return MainPage();},),);
                               }
                             }
                             //ALERT LAS CONTRASENAS NO COINCIDEN

@@ -72,6 +72,24 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                 ),
               ),
             ),
+            /*Padding(
+              padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
+              child: FlatButton(
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                color: Colors.blue,
+                child: Text(
+                  "ACTUALIZAR MI CUENTA",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DeliveryInfoScreen()),);
+                },
+              ),
+            ),*/
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
               child: FlatButton(
