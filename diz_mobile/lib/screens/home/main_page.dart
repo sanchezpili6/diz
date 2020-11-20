@@ -1,5 +1,4 @@
-import 'package:diz/widgets/allProducts.dart';
-import 'package:diz/widgets/departamentosMainPageHorizontalScroll.dart';
+import 'package:diz/widgets/generalProducts.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/cart_screen.dart';
@@ -14,10 +13,10 @@ class MainPage extends StatelessWidget{
 
         elevation: 0,
         actions: <Widget>[
-          IconButton(
+          /*IconButton(
             icon: Icon(Icons.search),
             onPressed: (){} ,
-          ),
+          ),*/
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: ()=>Navigator.of(context).pushNamed(CartScreen.routeName),
@@ -30,7 +29,7 @@ class MainPage extends StatelessWidget{
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               child: Text(
-                "Productos",
+                "Diz",
                 style: Theme.of(context)
                     .textTheme
                     .headline5
@@ -40,13 +39,7 @@ class MainPage extends StatelessWidget{
             Container(
               child: Column(
                 children: [
-                  AllProducts(cat: 1),
-                  AllProducts(cat: 2),
-                  AllProducts(cat: 3),
-                  AllProducts(cat: 4),
-                  AllProducts(cat: 5),
-                  AllProducts(cat: 6),
-                  AllProducts(cat: 7),
+                  AllProducts(),
                 ],
               ),
             ),

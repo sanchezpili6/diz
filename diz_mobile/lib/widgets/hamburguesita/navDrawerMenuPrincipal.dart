@@ -40,30 +40,35 @@ class NavDrawer extends StatelessWidget {
                 title: Text('Librería'),
                 color: cLibreria,
                 bckColor: Color(0xFF101820),
+                dep: 2,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.local_drink),
                 title: Text('Vinos y licores'),
                 color: cVinosLicores,
                 bckColor: Color(0xFF2D2926),
+                dep: 3,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.event_seat),
                 title: Text("Blancos y muebles"),
                 color: Color(0xFFFFFFFF),
                 bckColor: Color(0xFF000000),
+                dep: 5,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.face),
                 title: Text("Ropa"),
                 color: cRopa,
                 bckColor: Color(0xFF101820),
+                dep: 1,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.videogame_asset),
                 title: Text("Videojuegos"),
                 color: cVideojuegos,
                 bckColor: Color(0xFF101820),
+                dep: 4,
               ),
             ],
           ),
@@ -95,8 +100,8 @@ class DepartmentWidget extends StatelessWidget {
   final Text title;
   final Color color;
   final Color bckColor;
-
-  DepartmentWidget({this.icon, this.title, this.color, this.bckColor});
+  final int dep;
+  DepartmentWidget({this.icon, this.title, this.color, this.bckColor, @required this.dep});
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -106,7 +111,7 @@ class DepartmentWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Department(department: title, colour: color,bckColour: bckColor,),
+            builder: (context) => Department(department: title, colour: color,bckColour: bckColor, dep: dep,),
           ),
         ),
       },
