@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:diz/screens/payment/card_data.dart';
+import 'package:diz/services/codezip.dart';
+import 'package:diz/services/http_service.dart';
+import 'package:diz/services/post_model.dart';
 import 'package:diz/widgets/formulario/street.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import '../cart_screen.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MaterialApp(
@@ -13,13 +19,12 @@ void main() {
 
 class EntregaScreen extends StatefulWidget {
   @override
-  /*State<StatefulWidget> createState(){
-    return CardScreenState();
-  }*/
   EntregaScreenState createState() => EntregaScreenState();
 }
 
 class EntregaScreenState extends State<EntregaScreen> {
+  Future<Album> futureAlbum;
+
   String _street;
   String _numCasa;
   String _colonia;
@@ -28,22 +33,13 @@ class EntregaScreenState extends State<EntregaScreen> {
   String _estado;
   String _calles;
   final myController = TextEditingController();
-  //final GlobalKey<_PayScreenState> _formKey = GlobalKey<_PayScreenState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final HttpService httpService = HttpService();
+
   @override
   void initState() {
     super.initState();
-    myController.addListener(_printLatestValue);
-  }
-  _printLatestValue() {
-    print("${myController.text}");
-  }
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is removed from the widget tree.
-    // This also removes the _printLatestValue listener.
-    myController.dispose();
-    super.dispose();
+    futureAlbum = fetchAlbum();
   }
 
   Widget _buildEstado() {
@@ -55,31 +51,135 @@ class EntregaScreenState extends State<EntregaScreen> {
       items: [
         DropdownMenuItem(
           child: Text("Aguascalientes"),
-          value: 1,
+          value: "agua",
         ),
         DropdownMenuItem(
           child: Text("Baja California"),
-          value: 2,
+          value: "bajac",
         ),
         DropdownMenuItem(
           child: Text("Baja California Sur"),
-          value: 3,
+          value: "bajacals",
         ),
         DropdownMenuItem(
           child: Text("Campeche"),
-          value: 4,
+          value: "Campe",
         ),
         DropdownMenuItem(
           child: Text("Chiapas"),
-          value: 5,
+          value: "Chia",
         ),
         DropdownMenuItem(
           child: Text("Chihuaha"),
-          value: 6,
+          value: "Chih",
+        ),
+        DropdownMenuItem(
+          child: Text("Ciudad de México"),
+          value: "Cdmx",
+        ),
+        DropdownMenuItem(
+          child: Text("Coahuila"),
+          value: "Coa",
+        ),
+        DropdownMenuItem(
+          child: Text("Colima"),
+          value: "Col",
+        ),
+        DropdownMenuItem(
+          child: Text("Durango"),
+          value: "Dur",
+        ),
+        DropdownMenuItem(
+          child: Text("Estado de México"),
+          value: "EdoMex",
         ),
         DropdownMenuItem(
           child: Text("Ciudad de México"),
           value: 7,
+        ),
+        DropdownMenuItem(
+          child: Text("Guanajuato"),
+          value: "Guan",
+        ),
+        DropdownMenuItem(
+          child: Text("Guerrero"),
+          value: "Gue",
+        ),
+        DropdownMenuItem(
+          child: Text("Hidalgo"),
+          value: "Hid",
+        ),
+        DropdownMenuItem(
+          child: Text("Jalisco"),
+          value: "Jalisco",
+        ),
+        DropdownMenuItem(
+          child: Text("Michoacan"),
+          value: "Micho",
+        ),
+        DropdownMenuItem(
+          child: Text("Morelos"),
+          value: "Mor",
+        ),
+        DropdownMenuItem(
+          child: Text("Nayarit"),
+          value: "Nay",
+        ),
+        DropdownMenuItem(
+          child: Text("Nuevo León"),
+          value: "NL",
+        ),
+        DropdownMenuItem(
+          child: Text("Oaxaca"),
+          value: "Oax",
+        ),
+        DropdownMenuItem(
+          child: Text("Puebla"),
+          value: "Pue",
+        ),
+        DropdownMenuItem(
+          child: Text("Queretaro"),
+          value: "Que",
+        ),
+        DropdownMenuItem(
+          child: Text("Quintana Roo"),
+          value: "Quintana",
+        ),
+        DropdownMenuItem(
+          child: Text("San Luis"),
+          value: "SL",
+        ),
+        DropdownMenuItem(
+          child: Text("Sinaloa"),
+          value: "Sin",
+        ),
+        DropdownMenuItem(
+          child: Text("Son"),
+          value: "Son",
+        ),
+        DropdownMenuItem(
+          child: Text("Tabasco"),
+          value: "Tab",
+        ),
+        DropdownMenuItem(
+          child: Text("Tamaulipas"),
+          value: "Tam",
+        ),
+        DropdownMenuItem(
+          child: Text("Tlaxcala"),
+          value: "Tlax",
+        ),
+        DropdownMenuItem(
+          child: Text("Veracruz"),
+          value: "Ver",
+        ),
+        DropdownMenuItem(
+          child: Text("Yucatán"),
+          value: "Yuc",
+        ),
+        DropdownMenuItem(
+          child: Text("Zacatecas"),
+          value: "Zaca",
         ),
       ],
       /*onChanged: (value) {
@@ -108,7 +208,20 @@ class EntregaScreenState extends State<EntregaScreen> {
                     Navigator.of(context).pushNamed(CartScreen.routeName),
               ),
             ]),
-        body: new ListView(
+        body:
+            /*FutureBuilder<Album>(
+          future: futureAlbum,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(snapshot.data.codigo);
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            // By default, show a loading spinner.
+            return CircularProgressIndicator();
+          },
+        ));*/
+            new ListView(
           children: <Widget>[
             new Padding(
                 padding: const EdgeInsets.all(15.0),
