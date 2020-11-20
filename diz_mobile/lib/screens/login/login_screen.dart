@@ -1,4 +1,5 @@
 import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/services/loginUser.dart';
 import 'package:diz/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/login/recuperar_contraseña.dart';
@@ -19,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
     password = newText;
     print(password);
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: size.height * 0.42,
           ),*/
             SizedBox(height: size.height *0.03),
+            //CORREO
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -58,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               ),
             ),
+            //CONTRASENA
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -85,10 +89,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: FlatButton(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   color: Colors.blue,
-                  onPressed: (){
-                   // if(mail=='jacky@gmail.com' && password=='jacky')
+                  onPressed: ()async{
+                    int valid= await makePostRequest(mail, password);
+                   if(valid==201)
                     {
-                      print('entra');
+                      print('Contrasena valida');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -98,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     }
-                    /*else{
+                    else{
                       showDialog(
                           context: context,
                           builder: (buildcontext) {
@@ -114,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           }
                       );
-                    }*/
+                    }
                   },
                   child: Text("INICIAR SESIÓN",
                     style: TextStyle(
