@@ -22,19 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42f3be04-f542-476e-8112-b1577b304aae" name="Default Changelist" comment="Actualizacion de datos">
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/bill.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/bill_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/codezip.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/http_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/post_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/number.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/card_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/delivery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/delivery.dart" afterDir="false" />
+    <list default="true" id="42f3be04-f542-476e-8112-b1577b304aae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/user_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/user_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/phoneNumber.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/phoneNumber.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605813052275</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Actualizacion de datos">
+      <created>1605893776038</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605893776038</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,11 +226,11 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
-    <state x="424" y="0" key="CommitChangelistDialog2" timestamp="1605893726224">
+    <state x="424" y="0" key="CommitChangelistDialog2" timestamp="1605893775118">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605122198093" />
-    <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605893726224" />
+    <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605893775118" />
     <state x="424" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1605763204169" />
     <state x="594" y="231" key="FileChooserDialogImpl" timestamp="1605591408939">
       <screen x="0" y="0" width="1536" height="864" />
@@ -281,11 +277,11 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="457" y="156" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412150" />
-    <state x="361" y="152" key="Vcs.Push.Dialog.v2" timestamp="1605813058194">
+    <state x="361" y="152" key="Vcs.Push.Dialog.v2" timestamp="1605893779370">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604115210670" />
-    <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605813058194" />
+    <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1440.151.1440.900@0.0.1536.864" timestamp="1605893779370" />
     <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1605763218659" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604116165085">
       <screen x="0" y="0" width="1536" height="824" />
