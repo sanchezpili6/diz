@@ -22,8 +22,7 @@ class CardScreen extends StatefulWidget {
   CardScreenState createState() => CardScreenState();
 }
 
-Future<UserModel> validarTarjeta(
-    String noTarjeta, mesTarjeta, anioTarjeta) async {
+Future<UserModel> validarTarjeta(String noTarjeta, mesTarjeta, anioTarjeta) async {
   final String apiURL = 'http://35.239.19.77:8000/cards/';
 
   final response = await http.post(apiURL, body: {

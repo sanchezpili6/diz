@@ -1,5 +1,7 @@
 import 'package:diz/constants.dart';
 import 'package:diz/screens/department/department.dart';
+import 'package:diz/screens/myAccount/myAccountScreen.dart';
+import 'package:diz/services/registro.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
 
@@ -29,7 +31,14 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Mi cuenta'),
-              onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()),)}
+              onTap: () => {
+              if(logged==false||logged==null){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()),)
+              }
+              else{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyAccountScreen()),)
+              }
+            }
           ),
           ExpansionTile(
             leading: Icon(Icons.shopping_cart),
@@ -40,30 +49,35 @@ class NavDrawer extends StatelessWidget {
                 title: Text('Librería'),
                 color: cLibreria,
                 bckColor: Color(0xFF101820),
+                dep: 2,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.local_drink),
                 title: Text('Vinos y licores'),
                 color: cVinosLicores,
                 bckColor: Color(0xFF2D2926),
+                dep: 3,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.event_seat),
                 title: Text("Blancos y muebles"),
                 color: Color(0xFFFFFFFF),
                 bckColor: Color(0xFF000000),
+                dep: 5,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.face),
                 title: Text("Ropa"),
                 color: cRopa,
                 bckColor: Color(0xFF101820),
+                dep: 1,
               ),
               DepartmentWidget(
                 icon: Icon(Icons.videogame_asset),
                 title: Text("Videojuegos"),
                 color: cVideojuegos,
                 bckColor: Color(0xFF101820),
+                dep: 4,
               ),
             ],
           ),
@@ -75,7 +89,9 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: () => {Navigator.push(
+            onTap: () => {
+              logged=false,
+              Navigator.push(
             context,
             MaterialPageRoute(
             builder: (context) {
@@ -95,8 +111,8 @@ class DepartmentWidget extends StatelessWidget {
   final Text title;
   final Color color;
   final Color bckColor;
-
-  DepartmentWidget({this.icon, this.title, this.color, this.bckColor});
+  final int dep;
+  DepartmentWidget({this.icon, this.title, this.color, this.bckColor, @required this.dep});
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -106,7 +122,7 @@ class DepartmentWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Department(department: title, colour: color,bckColour: bckColor,),
+            builder: (context) => Department(department: title, colour: color,bckColour: bckColor, dep: dep,),
           ),
         ),
       },

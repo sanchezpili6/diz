@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:diz/widgets/allProducts.dart';
+
 class Departamentos extends StatefulWidget{
   @override
   _DepsState createState() => _DepsState();
 }
 
 class _DepsState extends State<Departamentos>{
-  List<String> departamentos = ["Videojuegos", "Ropa", "Librería", "Blancos y Muebles", "Vinos y Licores"];
+  List<String> departamentos = ["Ropa", "Libros", "Vinos y Licores", "Videojuegos", "Línea Blanca", "Muebles", "Electrónica"];
   int departamentoSeleccionado = 0;
+  int cate = 0;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 25,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: departamentos.length,
-        itemBuilder: (context, index) => buildDepartamento(index),
-      ),
+    cate = departamentoSeleccionado +7    ;
+    return Column(
+      children: [
+        SizedBox(
+          height: 25,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: departamentos.length,
+            itemBuilder: (context, index) => buildDepartamento(index),
+          ),
+        ),
+        SizedBox(
+          //height: 50,
+          child: buildProductos(cate),
+        ),
+      ],
     );
   }
 
@@ -24,6 +36,7 @@ class _DepsState extends State<Departamentos>{
       onTap:(){
         setState(() {
           departamentoSeleccionado = index;
+          cate = departamentoSeleccionado +1;
         });
       },
       child: Padding(
@@ -44,8 +57,23 @@ class _DepsState extends State<Departamentos>{
               width: 30,
               color: departamentoSeleccionado == index ? Colors.black : Colors.transparent,
             ),
+
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildProductos(int index){
+    return GestureDetector(
+      onTap:(){
+        setState(() {
+          departamentoSeleccionado = index;
+          cate = index +1;
+        });
+      },
+      child: Container(
+        child: AllProducts(cat: cate),
       ),
     );
   }

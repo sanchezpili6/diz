@@ -1,6 +1,8 @@
 import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/services/loginUser.dart';
 import 'package:diz/widgets/background.dart';
 import 'package:flutter/material.dart';
+import 'package:diz/screens/login/recuperar_contraseña.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -18,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
     password = newText;
     print(password);
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -39,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: size.height * 0.42,
           ),*/
             SizedBox(height: size.height *0.03),
+            //CORREO
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -57,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               ),
             ),
+            //CONTRASENA
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -84,10 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: FlatButton(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   color: Colors.blue,
-                  onPressed: (){
-                   // if(mail=='jacky@gmail.com' && password=='jacky')
+                  onPressed: ()async{
+                    int valid= await makePostRequest(mail, password);
+                   if(valid==201)
                     {
-                      print('entra');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -97,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     }
-                    /*else{
+                    else{
                       showDialog(
                           context: context,
                           builder: (buildcontext) {
@@ -113,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           }
                       );
-                    }*/
+                    }
                   },
                   child: Text("INICIAR SESIÓN",
                     style: TextStyle(
@@ -122,6 +127,39 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontSize: 20,
                     ),),
                 ),
+
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 2 ),
+              width: size.width * 0.4 ,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: FlatButton(
+                  padding: EdgeInsets.symmetric(vertical: 10  , horizontal: 4 ),
+                  color: Colors.black54,
+                  onPressed: (){
+                    // if(mail=='jacky@gmail.com' && password=='jacky')
+                    {
+                      print('olvidó su contraseña');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return RecContrase();
+                          },
+                        ),
+                      );
+                    }
+                  },
+                  child: Text("OLVIDÉ MI CONTRASEÑA",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white ,
+                      fontSize: 12  ,
+                    ),),
+                ),
+
               ),
             ),
 

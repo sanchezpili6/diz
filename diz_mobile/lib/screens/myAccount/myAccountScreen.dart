@@ -1,16 +1,21 @@
-import 'package:diz/widgets/generalProducts.dart';
+import 'package:diz/screens/cart_screen.dart';
+import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
-import 'package:diz/screens/cart_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class MainPage extends StatelessWidget{
+class MyAccountScreen extends StatefulWidget {
+  @override
+  _MyAccountScreenState createState() => _MyAccountScreenState();
+}
+
+class _MyAccountScreenState extends State<MyAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.black87,
-
         elevation: 0,
         actions: <Widget>[
           /*IconButton(
@@ -25,23 +30,20 @@ class MainPage extends StatelessWidget{
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: Text(
-                "Diz",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5
-                    .copyWith(fontWeight: FontWeight.bold),
+            Container(
+              child: Center(
+                child: Text('MI CUENTA',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                        fontStyle: FontStyle.italic,
+                    ),
+                ),
               ),
             ),
             Container(
-              child: Column(
-                children: [
-                  AllProducts(),
-                ],
-              ),
+              child: Text('Correo: '+correo),
             ),
           ],
         ),
@@ -49,4 +51,3 @@ class MainPage extends StatelessWidget{
     );
   }
 }
-
