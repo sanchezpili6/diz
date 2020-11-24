@@ -22,28 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dfe4290-c0b1-4e96-94bd-ddf124dad82b" name="Default Changelist" comment="Ya actualiza los datos del usuario con MDM:)">
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/deleteUserAccount.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/obtenerDatosUsuario.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/patchUpdateUser.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/services/update_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/containerWidgetAccountScreen.dart" afterDir="false" />
+    <list default="true" id="8dfe4290-c0b1-4e96-94bd-ddf124dad82b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/login/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/cardInfoScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/cardInfoScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/deliveryInfoScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/deliveryInfoScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/infoScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/infoScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/myAccountScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/myAccount/myAccountScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/delivery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/screens/payment/delivery.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/services/loginUser.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/services/loginUser.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/services/registro.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/services/registro.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/birthday.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/birthday.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/mail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/mail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/name.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/name.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/number.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/number.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/phoneNumber.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/phoneNumber.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/street.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/formulario/street.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/diz_mobile/lib/widgets/hamburguesita/navDrawerMenuPrincipal.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605912692813</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Ya actualiza los datos del usuario con MDM:)">
+      <created>1606177654330</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1606177654349</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,10 +325,10 @@
     </state>
     <state x="77" y="76" width="1383" height="673" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605810047355" />
     <state x="96" y="96" width="1728" height="852" key="AVDManager/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412479" />
-    <state x="386" y="0" key="CommitChangelistDialog2" timestamp="1606177634428">
+    <state x="386" y="0" key="CommitChangelistDialog2" timestamp="1606177651646">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="386" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606177634428" />
+    <state x="386" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606177651646" />
     <state x="743" y="279" key="FileChooserDialogImpl" timestamp="1603694407528">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -382,10 +369,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="457" y="156" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603694412150" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605912695099">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606177657769">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605912695099" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606177657769" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604116165085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -394,10 +381,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604116837691" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606154976938">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606178335839">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606154976938" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606178335839" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1605885633984">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
