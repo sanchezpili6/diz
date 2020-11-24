@@ -235,7 +235,7 @@ class EntregaScreenState extends State<EntregaScreen> {
                   children: <Widget>[
                     buildStreet(_cp, 'Código Postal', cp),
                     buildStreet(_street, 'Calle', calle),
-                    buildStreet(_numCasa, 'No. de casa', ''),
+                    buildStreet(_numCasa, 'No. de casa', noCasa),
                     buildStreet(_calles, 'Calles contiguas', entreCalles),
                     buildStreet(_colonia, 'Colonia', colonia),
                     buildStreet(_ciudad, 'Ciudad', ciudad),

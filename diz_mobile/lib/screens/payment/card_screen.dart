@@ -1,10 +1,6 @@
-import 'dart:convert';
-
 import 'package:diz/models/cart.dart';
 import 'package:diz/screens/home/main_page.dart';
-import 'package:diz/screens/payment/bill.dart';
 import 'package:diz/screens/payment/credit_card.dart';
-import 'package:diz/services/bill_model.dart';
 import 'package:diz/services/compra_service.dart';
 import 'package:diz/services/falloCompra.dart';
 import 'package:diz/services/realizarCompras.dart';
@@ -15,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../cart_screen.dart';
+import 'package:diz/screens/payment/billScreen.dart';
 
 class CardPyScreen extends StatelessWidget {
   final numeroT;
@@ -191,15 +188,6 @@ class CardPyScreen extends StatelessWidget {
                               );
                             });
                       }
-
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return BillScreen();
-                          },
-                        ),
-                      );*/
                     },
                   ),
                 ),
@@ -209,7 +197,16 @@ class CardPyScreen extends StatelessWidget {
                       "Generar factura",
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () async {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return BillScreen();
+                          },
+                        ),
+                      );
+                    },
                   ),
                 )
               ])

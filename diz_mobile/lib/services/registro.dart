@@ -4,22 +4,10 @@ import 'package:http/http.dart' as http;
 
 //nombrePila, apellidoPat, apellidoMat, fechaNac, genero,
 // CLienteInfo:  telefono correo noTarjeta, mesTarjeta, anioTarjeta, calle, colonia, ciudad, cp estado, entreCalles,
-String correo = '',
-    contrasena = '',
-    telefono = '',
-    nombrePila = '',
-    apellidoP = '',
-    apellidoM = '',
-    genero = '',
-    uid = '';
+String correo = '', contrasena = '', telefono = '', nombrePila = '', apellidoP = '', apellidoM = '', genero = '', uid = '';
 DateTime cumple;
 bool logged, isDeleted;
-String calle = '',
-    colonia = '',
-    ciudad = '',
-    cp = '',
-    estado = '',
-    entreCalles = '';
+String calle = '', colonia = '', ciudad = '', cp = '', estado = '', entreCalles = '', noCasa='';
 String nTarjeta = '', mTarjeta = '', aTarjeta = '';
 bool isMain;
 int noPedido;

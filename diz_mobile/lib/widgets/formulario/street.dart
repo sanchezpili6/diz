@@ -32,6 +32,10 @@ Widget buildStreet(_street, label, val) {
         ciudad=_street;
         print(ciudad+' ciudad');
       }
+      else if(label=='No. de casa'){
+        noCasa=_street;
+        print(noCasa+' noCasa');
+      }
     },
   );
 }
