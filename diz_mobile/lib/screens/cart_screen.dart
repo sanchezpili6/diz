@@ -1,6 +1,7 @@
 import 'package:diz/screens/payment/user_data.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
 import 'package:diz/services/cart.dart';
+import 'package:diz/services/obtenerDatosUsuario.dart';
 import 'package:diz/services/registro.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/models/ordersK.dart';
@@ -18,12 +19,8 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
-          'Mi Carrito',
-          style: GoogleFonts.sanchez(
-              fontSize: 25, color: Colors.white
-          )
-        ),
+        title: Text('Mi Carrito',
+            style: GoogleFonts.sanchez(fontSize: 25, color: Colors.white)),
       ),
       body: Column(
         children: <Widget>[
@@ -67,37 +64,38 @@ class _CheckoutButtonState extends State<CheckoutButton> {
   Widget build(BuildContext context) {
     return FlatButton(
       color: Colors.blue,
-      child: Text(
-          'Checkout',
+      child: Text('Checkout',
           style: GoogleFonts.sanchez(
-            fontWeight: FontWeight.bold,
-              fontSize: 25, color: Colors.white
-          )
-      ),
-      onPressed: () {
-        if(logged==true){
+              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white)),
+      onPressed: () async {
+        await makeGetRequestUserInfo(uid);
+        if (logged == true) {
           getCart(widget.cart, context);
           print(widget.cart.items.length);
-          if(widget.cart.items.length==0){
+          if (widget.cart.items.length == 0) {
             showDialog(
                 context: context,
                 builder: (buildcontext) {
                   return AlertDialog(
                     title: Text("CARRITO VACÍO:("),
-                    content: Text("Regresa a disfrutar de la experiencia de Diz"),
+                    content:
+                        Text("Regresa a disfrutar de la experiencia de Diz"),
                     actions: <Widget>[
                       RaisedButton(
                         color: Colors.blue,
-                        child: Text("REGRESAR", style: TextStyle(color: Colors.white),),
-                        onPressed: (){
-                          Navigator.of(context).pop(); Navigator.of(context).pop();},
+                        child: Text(
+                          "REGRESAR",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        },
                       )
                     ],
                   );
-                }
-            );
-          }
-          else{
+                });
+          } else {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -107,8 +105,9 @@ class _CheckoutButtonState extends State<CheckoutButton> {
               ),
             );
           }
-        }else{
-          Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
+        } else {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => WelcomeScreen()));
         }
       },
       /*widget.cart.totalAmount <= 0
