@@ -1,14 +1,11 @@
-import 'dart:convert';
-
 import 'package:diz/screens/payment/card_data.dart';
 import 'package:diz/services/codezip.dart';
 import 'package:diz/services/http_service.dart';
-import 'package:diz/services/post_model.dart';
 import 'package:diz/widgets/formulario/street.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import '../cart_screen.dart';
-import 'package:http/http.dart' as http;
+import 'package:diz/services/registro.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -233,12 +230,12 @@ class EntregaScreenState extends State<EntregaScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    buildStreet(_cp, 'Código Postal'),
-                    buildStreet(_street, 'Calle'),
-                    buildStreet(_numCasa, 'No. de casa'),
-                    buildStreet(_calles, 'Calles contiguas'),
-                    buildStreet(_colonia, 'Colonia'),
-                    buildStreet(_ciudad, 'Ciudad'),
+                    buildStreet(_cp, 'Código Postal', cp),
+                    buildStreet(_street, 'Calle', calle),
+                    buildStreet(_numCasa, 'No. de casa',''),
+                    buildStreet(_calles, 'Calles contiguas', entreCalles),
+                    buildStreet(_colonia, 'Colonia', colonia),
+                    buildStreet(_ciudad, 'Ciudad', ciudad),
                     _buildEstado(),
                     SizedBox(height: 100),
                     RaisedButton(
