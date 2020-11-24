@@ -6,6 +6,8 @@ import 'package:diz/widgets/formulario/name.dart';
 import 'package:diz/widgets/formulario/phoneNumber.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
+import 'package:diz/services/registro.dart';
+
 class InfoScreen extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -97,17 +99,38 @@ class _InfoScreenState extends State<InfoScreen> {
                           return;
                         } else {
                           _formKey.currentState.save();
-                          //await _makeGetRequest();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return DeliveryInfoScreen();
-                              },
-                            ),
-                          );
+                          try{
+                            cumple=DateTime.parse(dateCtl.text);
+                            genero=_gender;
+                            print(genero);
+                            print(dateCtl.text);
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return DeliveryInfoScreen();
+                                },
+                              ),
+                            );
+                          }
+                          catch(e){
+                            showDialog(
+                                context: context,
+                                builder: (buildcontext) {
+                                  return AlertDialog(
+                                    content: Text("Por favor ingrese su fecha de nacimiento"),
+                                    actions: <Widget>[
+                                      RaisedButton(
+                                        child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                        onPressed: (){ Navigator.of(context).pop(); },
+                                      )
+                                    ],
+                                  );
+                                }
+                            );
+                          }
                         }
-                        //_formKey.currentState.save();
                       },
                     )
                   ],

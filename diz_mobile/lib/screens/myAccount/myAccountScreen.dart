@@ -1,29 +1,21 @@
 import 'package:diz/screens/cart_screen.dart';
 import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/screens/myAccount/infoScreen.dart';
+import 'package:diz/services/deleteUserAccount.dart';
 import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
+import 'package:diz/widgets/containerWidgetAccountScreen.dart';
 
 class MyAccountScreen extends StatefulWidget {
+  final user;
+  MyAccountScreen({this.user});
   @override
   _MyAccountScreenState createState() => _MyAccountScreenState();
 }
 
 class _MyAccountScreenState extends State<MyAccountScreen> {
-
-
-  makeDeleteRequest(uid) async {
-    // post 1
-    String url = 'http://35.239.19.77:8000/clients/$uid/';
-    // make DELETE request
-    Response response = await delete(url);
-    // check the status code for the result
-    int statusCode = response.statusCode;
-    return statusCode;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +24,6 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
         backgroundColor: Colors.black87,
         elevation: 0,
         actions: <Widget>[
-          /*IconButton(
-            icon: Icon(Icons.search),
-            onPressed: (){} ,
-          ),*/
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () =>
@@ -59,20 +47,23 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                 ),
               ),
             ),
-            Container(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(50.0, 15.0, 30.0, 15.0),
-                child: Text(
-                  'Correo:  ' + correo,
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.lato(
-                    fontSize: 20,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ),
-            ),
-            /*Padding(
+            //nombrePila, apellidoPat, apellidoMat, fechaNac, genero,
+            // CLienteInfo:  telefono correo noTarjeta, mesTarjeta, anioTarjeta, calle, colonia, ciudad, cp estado, entreCalles,
+            containerWidgetMyAccount(value:  'Nombre:  ' + widget.user['nombrePila']),
+            containerWidgetMyAccount(value: 'Apellidos:  ' + widget.user['apellidoPat']+ ' '+  widget.user['apellidoMat']),
+            containerWidgetMyAccount(value: 'Fecha de nacimiento:  ' + widget.user['fechaNac'].toString()),
+            containerWidgetMyAccount(value: 'Género:  ' + widget.user['genero']),
+            containerWidgetMyAccount(value: 'Teléfono:  ' + widget.user['clienteInfo'][0]['telefono']),
+            containerWidgetMyAccount(value: 'Correo:  ' + widget.user['clienteInfo'][0]['correo']),
+            //containerWidgetMyAccount(value: 'NoTarjeta: ' + widget.user['clienteInfo'][0]['noTarjeta']==''?  widget.user['clienteInfo'][0]['noTarjeta']: '**** **** **** *'+ widget.user['clienteInfo'][0]['noTarjeta'].substring(14, 16)),
+            containerWidgetMyAccount(value: 'NoTarjeta: ' + widget.user['clienteInfo'][0]['noTarjeta']),
+            containerWidgetMyAccount(value: 'Calle: ' + widget.user['clienteInfo'][0]['calle']),
+            containerWidgetMyAccount(value: 'Colonia: ' + widget.user['clienteInfo'][0]['colonia']),
+            containerWidgetMyAccount(value: 'Ciudad: ' + widget.user['clienteInfo'][0]['ciudad']),
+            containerWidgetMyAccount(value: 'CP: ' + widget.user['clienteInfo'][0]['cp']),
+            containerWidgetMyAccount(value: 'Estado: ' + widget.user['clienteInfo'][0]['estado']),
+            containerWidgetMyAccount(value: 'Entre Calles: ' + widget.user['clienteInfo'][0]['entreCalles']),
+            Padding(
               padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
               child: FlatButton(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
@@ -86,10 +77,10 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => DeliveryInfoScreen()),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => InfoScreen()),);
                 },
               ),
-            ),*/
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
               child: FlatButton(

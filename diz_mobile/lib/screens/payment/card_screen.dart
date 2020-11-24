@@ -1,19 +1,26 @@
+import 'dart:convert';
+
 import 'package:diz/models/cart.dart';
+import 'package:diz/screens/home/main_page.dart';
 import 'package:diz/screens/payment/bill.dart';
 import 'package:diz/screens/payment/credit_card.dart';
-import 'package:diz/services/cart.dart';
+import 'package:diz/services/bill_model.dart';
+import 'package:diz/services/compra_service.dart';
+import 'package:diz/services/realizarCompras.dart';
+import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/cart_item.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../cart_screen.dart';
 
 class CardPyScreen extends StatelessWidget {
   final numeroT;
   final vencM;
   final vencY;
+
+  List<Pedido> pedido = [];
 
   CardPyScreen({this.numeroT, this.vencM, this.vencY});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -79,12 +86,20 @@ class CardPyScreen extends StatelessWidget {
         Expanded(
           child: ListView.builder(
               itemCount: cart.items.length,
-              itemBuilder: (ctx, i) => CartPdt(
-                  cart.items.values.toList()[i].id,
-                  cart.items.keys.toList()[i],
-                  cart.items.values.toList()[i].price,
-                  cart.items.values.toList()[i].cantidad,
-                  cart.items.values.toList()[i].name)),
+              itemBuilder: (ctx, i) {
+                pedido.add(Pedido(
+                    codigoProducto: cart.items.values.toList()[i].id.toString(),
+                    cantidadProducto:
+                        cart.items.values.toList()[i].cantidad.toString(),
+                    precioProducto:
+                        cart.items.values.toList()[i].cantidad.toString()));
+                return CartPdt(
+                    cart.items.values.toList()[i].id,
+                    cart.items.keys.toList()[i],
+                    cart.items.values.toList()[i].price,
+                    cart.items.values.toList()[i].cantidad,
+                    cart.items.values.toList()[i].name);
+              }),
         ),
         Expanded(
           child: Column(
@@ -96,7 +111,69 @@ class CardPyScreen extends StatelessWidget {
                       "Confimar compra",
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () => null,
+                    onPressed: () async {
+                      //Codigo, cantidad, precio
+                      PurchaseModel purchase = PurchaseModel(
+                          id: int.parse(uid),
+                          compra: Compra(
+                              noTarjeta: nTarjeta,
+                              mesTarjeta: mTarjeta,
+                              anioTarjeta: aTarjeta,
+                              total: '0',
+                              calle: calle,
+                              numero: telefono,
+                              colonia: colonia,
+                              ciudad: ciudad,
+                              cp: cp,
+                              estado: estado,
+                              entreCalles: entreCalles),
+                          pedido: pedido);
+                      print(purchaseModelToJson(purchase));
+                      int val =
+                          await registrarCompra(purchaseModelToJson(purchase));
+
+                      if (val == 201) {
+                        print('success');
+                        showDialog(
+                            context: context,
+                            builder: (buildcontext) {
+                              return AlertDialog(
+                                title: Text("COMPRA EXITOSA"),
+                                //content: Text("Regrese a la página principal"),
+                                actions: <Widget>[
+                                  RaisedButton(
+                                    child: Text(
+                                      "Regresar a página principal",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return MainPage();
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  )
+                                ],
+                              );
+                            });
+                      } else {
+                        //Giss cuando el pedido falla
+                        print('fail');
+                      }
+
+                      /*Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return BillScreen();
+                          },
+                        ),
+                      );*/
+                    },
                   ),
                 ),
                 Expanded(
@@ -105,15 +182,30 @@ class CardPyScreen extends StatelessWidget {
                       "Generar factura",
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      final BillModel bill = await generarFactura(
+                          12,
+                          "AEDF000120610",
+                          "Tec de Monterrey",
+                          "facevesd@gmail.com",
+                          "7223542312",
+                          "Benito Juarez",
+                          "23",
+                          "La Joya",
+                          "Zinacantepec",
+                          "51355",
+                          "Estado de México",
+                          "23 de Febrero y 3 de Marzo");
+
+                      //print("Bill:" + _bill.toString());
+                      /*Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
                             return BillScreen();
                           },
                         ),
-                      );
+                      );*/
                     },
                   ),
                 )

@@ -1,12 +1,15 @@
 import 'package:diz/services/RegisterUser.dart';
 import 'package:diz/services/loginUser.dart';
 import 'package:http/http.dart' as http;
-
+//nombrePila, apellidoPat, apellidoMat, fechaNac, genero,
+// CLienteInfo:  telefono correo noTarjeta, mesTarjeta, anioTarjeta, calle, colonia, ciudad, cp estado, entreCalles,
 String correo='', contrasena='', telefono='', nombrePila='', apellidoP='', apellidoM='', genero='', uid='';
 DateTime cumple;
 bool logged, isDeleted;
 String calle='', colonia='', ciudad='',cp='',estado='', entreCalles='';
+String nTarjeta='', mTarjeta='', aTarjeta='';
 bool isMain;
+var token;
 List<ClienteInfo> clienteInfo=[];
 List<dynamic> compra=[];
 
