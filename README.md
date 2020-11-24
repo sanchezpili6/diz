@@ -37,6 +37,8 @@ Dark
 Para poder visualizar la app mientras trabajas tendrás que instalar un emulador de android. Para eso busca en android studio el AVD manager y sigue las instrucciones para instalar el emulador. 
 Tendrás muchas opciones de las que elegir y, aunque la aplicación fue pensada para desplegarse en un celular, podrás elegir también otros equipos y la aplicación deberá desplegarse correctamente en cualquiera de ellos. 
 
+### [Presentación con todas las pantallas](https://drive.google.com/file/d/1IkqceymRMcOTPNtl3s37VaSdD0eMT93b/view?usp=sharing)
+
 ### Conexión con MDM para registro de usuarios
 ![](https://raw.githubusercontent.com/sanchezpili6/diz/master/diz_mobile/assets/readme_assets/registro.png)
 
