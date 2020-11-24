@@ -1,111 +1,26 @@
 import 'dart:convert';
 
 import 'package:diz/models/cart.dart';
+import 'package:diz/screens/home/main_page.dart';
 import 'package:diz/screens/payment/bill.dart';
 import 'package:diz/screens/payment/credit_card.dart';
 import 'package:diz/services/bill_model.dart';
 import 'package:diz/services/compra_service.dart';
+import 'package:diz/services/realizarCompras.dart';
 import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/cart_item.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 import '../cart_screen.dart';
-
-Future<BillModel> generarFactura(
-    int compraId,
-    String rfc,
-    String razonSocial,
-    String correo,
-    String telefono,
-    String calle,
-    String numero,
-    String colonia,
-    String ciudad,
-    String cp,
-    String estado,
-    String entreCalles) async {
-  final String apiURL = 'http://35.239.19.77:8000/facturas/';
-
-  final response = await http.post(apiURL,
-      body: json.encode({
-        "compraId": compraId,
-        "rfc": rfc,
-        "razonSocial": razonSocial,
-        "correo": correo,
-        "telefono": telefono,
-        "calle": calle,
-        "numero": numero,
-        "colonia": colonia,
-        "ciudad": ciudad,
-        "cp": cp,
-        "estado": estado,
-        "entreCalles": entreCalles
-      }));
-
-  if (response.statusCode == 201) {
-    final String responseString = response.body;
-    print("Status = " + response.statusCode.toString());
-    return billModelFromJson(responseString);
-  } else {
-    print("Status = " + response.statusCode.toString());
-    return null;
-  }
-}
-
-Future<PurchaseModel> registrarCompra(
-    int compraId,
-    String noTarjeta,
-    String mesTarjeta,
-    String anioTarjeta,
-    String total,
-    String calle,
-    String numero,
-    String colonia,
-    String ciudad,
-    String cp,
-    String estado,
-    String entreCalles,
-    String codigoProducto,
-    String cantidadProducto,
-    String precioProducto) async {
-  final String apiURL = 'http://35.239.19.77:8000/compras/';
-
-  final response = await http.post(apiURL,
-      body: json.encode({
-        "compraId": compraId,
-        "noTarjeta": noTarjeta,
-        "mesTarjeta": mesTarjeta,
-        "anioTarjeta": anioTarjeta,
-        "total": total,
-        "calle": calle,
-        "numero": numero,
-        "colonia": colonia,
-        "ciudad": ciudad,
-        "cp": cp,
-        "estado": estado,
-        "entreCalles": entreCalles
-      }));
-
-  if (response.statusCode == 201) {
-    final String responseString = response.body;
-    print("Status = " + response.statusCode.toString());
-    return purchaseModelFromJson(responseString);
-  } else {
-    print("Status = " + response.statusCode.toString());
-    return null;
-  }
-}
 
 class CardPyScreen extends StatelessWidget {
   final numeroT;
   final vencM;
   final vencY;
 
-  BillModel _bill;
-  PurchaseModel _purchase;
+  List<Pedido> pedido = [];
 
   CardPyScreen({this.numeroT, this.vencM, this.vencY});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -171,12 +86,20 @@ class CardPyScreen extends StatelessWidget {
         Expanded(
           child: ListView.builder(
               itemCount: cart.items.length,
-              itemBuilder: (ctx, i) => CartPdt(
-                  cart.items.values.toList()[i].id,
-                  cart.items.keys.toList()[i],
-                  cart.items.values.toList()[i].price,
-                  cart.items.values.toList()[i].cantidad,
-                  cart.items.values.toList()[i].name)),
+              itemBuilder: (ctx, i) {
+                pedido.add(Pedido(
+                    codigoProducto: cart.items.values.toList()[i].id.toString(),
+                    cantidadProducto:
+                        cart.items.values.toList()[i].cantidad.toString(),
+                    precioProducto:
+                        cart.items.values.toList()[i].cantidad.toString()));
+                return CartPdt(
+                    cart.items.values.toList()[i].id,
+                    cart.items.keys.toList()[i],
+                    cart.items.values.toList()[i].price,
+                    cart.items.values.toList()[i].cantidad,
+                    cart.items.values.toList()[i].name);
+              }),
         ),
         Expanded(
           child: Column(
@@ -189,30 +112,59 @@ class CardPyScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () async {
-                      //PurchaseModel purchase = PurchaseModel(id: uid,  );
-                      final PurchaseModel purchase = await registrarCompra(
-                        33,
-                        "4152313638174545",
-                        "10",
-                        "21",
-                        "1200",
-                        "Benito Juarez",
-                        "23",
-                        "La Joya",
-                        "Zinacantepec",
-                        "51355",
-                        "Estado de México",
-                        "23 de Febrero y 3 de Marzo",
-                        "BCDE12",
-                        "1",
-                        "1200",
-                      );
+                      //Codigo, cantidad, precio
+                      PurchaseModel purchase = PurchaseModel(
+                          id: int.parse(uid),
+                          compra: Compra(
+                              noTarjeta: nTarjeta,
+                              mesTarjeta: mTarjeta,
+                              anioTarjeta: aTarjeta,
+                              total: '0',
+                              calle: calle,
+                              numero: telefono,
+                              colonia: colonia,
+                              ciudad: ciudad,
+                              cp: cp,
+                              estado: estado,
+                              entreCalles: entreCalles),
+                          pedido: pedido);
+                      print(purchaseModelToJson(purchase));
+                      int val =
+                          await registrarCompra(purchaseModelToJson(purchase));
 
-                      setState() {
-                        _purchase = purchase;
+                      if (val == 201) {
+                        print('success');
+                        showDialog(
+                            context: context,
+                            builder: (buildcontext) {
+                              return AlertDialog(
+                                title: Text("COMPRA EXITOSA"),
+                                //content: Text("Regrese a la página principal"),
+                                actions: <Widget>[
+                                  RaisedButton(
+                                    child: Text(
+                                      "Regresar a página principal",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return MainPage();
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  )
+                                ],
+                              );
+                            });
+                      } else {
+                        //Giss cuando el pedido falla
+                        print('fail');
                       }
 
-                      print("Purchase:" + _bill.toString());
                       /*Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -245,11 +197,7 @@ class CardPyScreen extends StatelessWidget {
                           "Estado de México",
                           "23 de Febrero y 3 de Marzo");
 
-                      setState() {
-                        _bill = bill;
-                      }
-
-                      print("Bill:" + _bill.toString());
+                      //print("Bill:" + _bill.toString());
                       /*Navigator.push(
                         context,
                         MaterialPageRoute(
