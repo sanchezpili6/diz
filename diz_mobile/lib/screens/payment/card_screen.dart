@@ -6,6 +6,7 @@ import 'package:diz/screens/payment/bill.dart';
 import 'package:diz/screens/payment/credit_card.dart';
 import 'package:diz/services/bill_model.dart';
 import 'package:diz/services/compra_service.dart';
+import 'package:diz/services/falloCompra.dart';
 import 'package:diz/services/realizarCompras.dart';
 import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/cart_item.dart';
@@ -161,8 +162,34 @@ class CardPyScreen extends StatelessWidget {
                               );
                             });
                       } else {
-                        //Giss cuando el pedido falla
-                        print('fail');
+                        await makePostFail();
+                        showDialog(
+                            context: context,
+                            builder: (buildcontext) {
+                              return AlertDialog(
+                                title:
+                                    Text("Error: No se pudo realizar compra"),
+                                //content: Text("Regrese a la página principal"),
+                                actions: <Widget>[
+                                  RaisedButton(
+                                    child: Text(
+                                      "Regresar a página principal",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return MainPage();
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  )
+                                ],
+                              );
+                            });
                       }
 
                       /*Navigator.push(
@@ -182,31 +209,7 @@ class CardPyScreen extends StatelessWidget {
                       "Generar factura",
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () async {
-                      final BillModel bill = await generarFactura(
-                          12,
-                          "AEDF000120610",
-                          "Tec de Monterrey",
-                          "facevesd@gmail.com",
-                          "7223542312",
-                          "Benito Juarez",
-                          "23",
-                          "La Joya",
-                          "Zinacantepec",
-                          "51355",
-                          "Estado de México",
-                          "23 de Febrero y 3 de Marzo");
-
-                      //print("Bill:" + _bill.toString());
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return BillScreen();
-                          },
-                        ),
-                      );*/
-                    },
+                    onPressed: () async {},
                   ),
                 )
               ])
