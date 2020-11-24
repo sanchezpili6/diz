@@ -30,10 +30,10 @@ class RecContraseState extends State<RecContrase> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "    LOGIN",
+              "Elige una nueva contraseña",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.blueAccent,
                 fontSize: 25,
               ),
             ),
