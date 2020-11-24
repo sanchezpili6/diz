@@ -130,6 +130,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       }
+                      else if(valid==200)
+                      {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainPage();
+                            },
+                          ),
+                        );
+                      }
                       else{
                         showDialog(
                             context: context,
@@ -170,17 +181,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.black54,
                   onPressed: ()async{
                     int valid= await makePostRequestContT(mail);
-                    // if(mail=='jacky@gmail.com' && password=='jacky')
+                    showDialog(
+                        context: context,
+                        builder: (buildcontext) {
+                          return AlertDialog(
+                            title: Text("LISTO"),
+                            content: Text("Usa la contraseña temporal que llegó a tu correo para iniciar sesión"),
+                            actions: <Widget>[
+                              RaisedButton(
+                                child: Text("CERRAR", style: TextStyle(color: Colors.white),),
+                                onPressed: (){
+                                  Navigator.of(context).pop(); Navigator.of(context).pop();},
+                              )
+                            ],
+                          );
+                        }
+                    );
                         {
                       print('olvidó su contraseña');
-                      Navigator.push(
+                      /*Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
                             return RecContrase();
                           },
                         ),
-                      );
+                      );*/
                     }
                   },
                   child: Text("OLVIDÉ MI CONTRASEÑA",
