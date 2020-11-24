@@ -1,6 +1,6 @@
 import 'package:diz/screens/cart_screen.dart';
 import 'package:diz/screens/home/main_page.dart';
-import 'package:diz/screens/myAccount/InfoScreen.dart';
+import 'package:diz/screens/myAccount/infoScreen.dart';
 import 'package:diz/services/deleteUserAccount.dart';
 import 'package:diz/services/registro.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
