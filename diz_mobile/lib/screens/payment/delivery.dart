@@ -43,7 +43,10 @@ class EntregaScreenState extends State<EntregaScreen> {
     return DropdownButtonFormField(
       decoration: InputDecoration(labelText: 'Estado'),
       value: _estado,
-      onChanged: (_estadoSelected) => setState(() => _estado = _estadoSelected),
+      onChanged: (_estadoSelected) => setState(() {
+        _estado = _estadoSelected;
+        estado = _estado;
+      }),
       validator: (value) => value == null ? 'Dato requerido' : null,
       items: [
         DropdownMenuItem(
@@ -232,7 +235,7 @@ class EntregaScreenState extends State<EntregaScreen> {
                   children: <Widget>[
                     buildStreet(_cp, 'Código Postal', cp),
                     buildStreet(_street, 'Calle', calle),
-                    buildStreet(_numCasa, 'No. de casa',''),
+                    buildStreet(_numCasa, 'No. de casa', noCasa),
                     buildStreet(_calles, 'Calles contiguas', entreCalles),
                     buildStreet(_colonia, 'Colonia', colonia),
                     buildStreet(_ciudad, 'Ciudad', ciudad),

@@ -1,4 +1,5 @@
 import 'package:diz/constants.dart';
+import 'package:diz/models/cart.dart';
 import 'package:diz/screens/department/department.dart';
 import 'package:diz/screens/home/main_page.dart';
 import 'package:diz/screens/myAccount/myAccountScreen.dart';
@@ -6,6 +7,7 @@ import 'package:diz/services/obtenerDatosUsuario.dart';
 import 'package:diz/services/registro.dart';
 import 'package:flutter/material.dart';
 import 'package:diz/screens/welcome/welcome_screen.dart';
+import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -103,6 +105,7 @@ class NavDrawer extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: () => {
+              Provider.of<Cart>(context, listen: false).clear(),
               logged=false, correo='', contrasena='', telefono='', nombrePila='', apellidoP='', apellidoM='', genero='', uid='',cumple=null,
               Navigator.push(
             context,

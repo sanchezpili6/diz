@@ -2,7 +2,7 @@ import 'package:diz/screens/payment/card_screen.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:diz/services/registro.dart';
 import '../../user_model.dart';
 import '../cart_screen.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +22,8 @@ class CardScreen extends StatefulWidget {
   CardScreenState createState() => CardScreenState();
 }
 
-Future<UserModel> validarTarjeta(String noTarjeta, mesTarjeta, anioTarjeta) async {
+Future<UserModel> validarTarjeta(
+    String noTarjeta, mesTarjeta, anioTarjeta) async {
   final String apiURL = 'http://35.239.19.77:8000/cards/';
 
   final response = await http.post(apiURL, body: {
@@ -218,7 +219,9 @@ class CardScreenState extends State<CardScreen> {
                           final String noTarjeta = numController.text;
                           final String mesTarjeta = mesController.text;
                           final String anioTarjeta = anioController.text;
-
+                          aTarjeta = anioController.text;
+                          nTarjeta = numController.text;
+                          mTarjeta = mesController.text;
                           final UserModel user = await validarTarjeta(
                               noTarjeta, mesTarjeta, anioTarjeta);
 
