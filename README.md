@@ -31,14 +31,23 @@ $ sudo snap install android-studio --classic
 - Selecciona la opción de Git
 - Pega el URL que copiaste y elige el directorio donde quieres guardarlo
 - Click en clonar
-
+Dark
 ### Navegando por la aplicación
 
-Para poder visualizar la app mientras trabajas tendrás que instalar un emulador de android, para eso busca en android studio el AVD manager y sigue las instrucciones para instalar el emulador. 
+Para poder visualizar la app mientras trabajas tendrás que instalar un emulador de android. Para eso busca en android studio el AVD manager y sigue las instrucciones para instalar el emulador. 
 Tendrás muchas opciones de las que elegir y, aunque la aplicación fue pensada para desplegarse en un celular, podrás elegir también otros equipos y la aplicación deberá desplegarse correctamente en cualquiera de ellos. 
 
 ### Conexión con MDM para registro de usuarios
+![](https://raw.githubusercontent.com/sanchezpili6/diz/master/diz_mobile/assets/readme_assets/registro.png)
+
 ### Conexión con SSO para login
+![](https://raw.githubusercontent.com/sanchezpili6/diz/master/diz_mobile/assets/readme_assets/login.png)
+
 ### Conexión con SSO para recuperar la contraseña
+![](https://raw.githubusercontent.com/sanchezpili6/diz/master/diz_mobile/assets/readme_assets/cont_temp.png)
+
 ### Conexión con MDM para validar la tarjeta de crédito
+![](https://raw.githubusercontent.com/sanchezpili6/diz/master/diz_mobile/assets/readme_assets/tarjeta_invalida.png)
+
 ### Conexión con ERP para desplegar los productos
+![](https://raw.githubusercontent.com/sanchezpili6/diz/master/diz_mobile/assets/readme_assets/p_generales.png)
