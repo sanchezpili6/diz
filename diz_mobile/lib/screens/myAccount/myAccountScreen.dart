@@ -15,7 +15,7 @@ class MyAccountScreen extends StatefulWidget {
   _MyAccountScreenState createState() => _MyAccountScreenState();
 }
 
-class _MyAccountScreenState extends State<MyAccountScreen> {
+class _MyAccountScreenState extends State<MyAccountScreen> {git
   @override
   Widget build(BuildContext context) {
     return Scaffold(
