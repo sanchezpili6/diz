@@ -1,26 +1,17 @@
 import 'package:diz/services/RegisterUser.dart';
 import 'package:diz/services/loginUser.dart';
 import 'package:http/http.dart' as http;
-
-String correo = '',
-    contrasena = '',
-    telefono = '',
-    nombrePila = '',
-    apellidoP = '',
-    apellidoM = '',
-    genero = '',
-    uid = '77';
+//nombrePila, apellidoPat, apellidoMat, fechaNac, genero,
+// CLienteInfo:  telefono correo noTarjeta, mesTarjeta, anioTarjeta, calle, colonia, ciudad, cp estado, entreCalles,
+String correo='', contrasena='', telefono='', nombrePila='', apellidoP='', apellidoM='', genero='', uid='';
 DateTime cumple;
-bool logged = true, isDeleted;
-String calle = '',
-    colonia = '',
-    ciudad = '',
-    cp = '',
-    estado = '',
-    entreCalles = '';
+bool logged, isDeleted;
+String calle='', colonia='', ciudad='',cp='',estado='', entreCalles='';
+String nTarjeta='', mTarjeta='', aTarjeta='';
 bool isMain;
-List<ClienteInfo> clienteInfo = [];
-List<dynamic> compra = [];
+var token;
+List<ClienteInfo> clienteInfo=[];
+List<dynamic> compra=[];
 
 Future<int> registerUser(user) async {
   String url = 'http://35.239.19.77:8000/clients/';

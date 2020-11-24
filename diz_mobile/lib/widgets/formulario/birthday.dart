@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 Widget buildBirthday(dateCtl, _birthday, context) {
   return TextFormField(
     validator: (String value) {

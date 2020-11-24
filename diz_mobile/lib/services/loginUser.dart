@@ -14,6 +14,7 @@ makePostRequest(mail, password) async {
   String body = response.body;
   Map<String, dynamic> user = jsonDecode(body);
   if(statusCode==201){
+    token=user['token'];
     uid=user['uid'];
     logged=true;
     correo=mail;
