@@ -1,9 +1,12 @@
 import 'package:diz/screens/cart_screen.dart';
 import 'package:diz/screens/payment/card_data.dart';
-import 'package:diz/screens/payment/card_screen.dart';
 import 'package:diz/user_model.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
+import 'package:diz/services/registro.dart';
+import 'package:diz/services/update_model.dart';
+import 'package:diz/screens/home/main_page.dart';
+import 'package:diz/services/patchUpdateUser.dart';
 
 class CardInfoScreen extends StatefulWidget {
   @override
@@ -105,7 +108,6 @@ class _CardInfoScreenState extends State<CardInfoScreen> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,18 +176,62 @@ class _CardInfoScreenState extends State<CardInfoScreen> {
                           });
                           if (_user != null) {
                             print("Tarjeta valida");
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return CardPyScreen(
-                                    numeroT: _numeroTarjeta,
-                                    vencM: _vencimiento_month,
-                                    vencY: _vencimiento_year,
-                                  );
-                                },
-                              ),
-                            );
+                             nTarjeta=numController.text;mTarjeta=mesController.text;aTarjeta=anioController.text;
+                             print(nTarjeta);print(mTarjeta);print(aTarjeta);
+                             UpdateUserModel user = UpdateUserModel(cliente: Cliente(fechaNac: cumple, apellidoMat: apellidoM, apellidoPat: apellidoP, genero: genero, nombrePila: nombrePila),clienteInfo: ClienteInfo(telefono: telefono, correo: correo, noTarjeta: nTarjeta, mesTarjeta: mTarjeta, anioTarjeta: aTarjeta, calle: calle,  colonia: colonia, ciudad: ciudad, cp: cp, estado: estado,entreCalles: entreCalles,),);
+                             print(updateUserModelToJson(user));
+                             var updateUser = await makePatchRequest(updateUserModelToJson(user));
+                             if(updateUser==202){
+                               print('success');
+                               showDialog(
+                                   context: context,
+                                   builder: (buildcontext) {
+                                     return AlertDialog(
+                                       title: Text("ACTUALIZADO CON ÉXITO"),
+                                       //content: Text("Regrese a la página principal"),
+                                       actions: <Widget>[
+                                         RaisedButton(
+                                           child: Text(
+                                             "Regresar a página principal",
+                                             style: TextStyle(color: Colors.black),
+                                           ),
+                                           onPressed: () {
+                                             Navigator.push(
+                                               context,
+                                               MaterialPageRoute(
+                                                 builder: (context) {
+                                                   return MainPage();
+                                                 },
+                                               ),
+                                             );
+                                           },
+                                         )
+                                       ],
+                                     );
+                                   }
+                                 );
+                             }
+                             else{
+                               showDialog(
+                                   context: context,
+                                   builder: (buildcontext) {
+                                     return AlertDialog(
+                                       title: Text("ERROR"),
+                                       content: Text("No se pudo actualizar correctamente, inténtelo nuevamente"),
+                                       actions: <Widget>[
+                                         RaisedButton(
+                                           child: Text(
+                                             "CERRAR",
+                                             style: TextStyle(color: Colors.white),
+                                           ),
+                                           onPressed: () {
+                                             Navigator.of(context).pop();
+                                           },
+                                         )
+                                       ],
+                                     );
+                                   });
+                             }
                           } else {
                             print("Tarjeta invalida");
                             showDialog(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:diz/services/registro.dart';
 Widget buildMail(_mail) {
   return TextFormField(
-    decoration: InputDecoration(labelText: 'Correo'),
+    initialValue: correo,
+    decoration: InputDecoration(labelText: correo),
     maxLength: 30,
     validator: (String value) {
       if (value.isEmpty) {
@@ -20,6 +21,7 @@ Widget buildMail(_mail) {
     onSaved: (String value) {
       _mail = value;
       print(_mail);
+      correo=_mail;
     },
   );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:diz/services/registro.dart';
 Widget buildNumber(_number) {
   return TextFormField(
     decoration: InputDecoration(labelText: 'Numero telefonico'),
@@ -17,6 +17,8 @@ Widget buildNumber(_number) {
     },
     onSaved: (String value) {
       _number = value;
+      telefono=_number;
+      print(telefono);
     },
   );
 }

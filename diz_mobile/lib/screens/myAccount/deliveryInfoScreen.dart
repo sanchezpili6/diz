@@ -1,10 +1,9 @@
 import 'package:diz/screens/cart_screen.dart';
 import 'package:diz/screens/myAccount/cardInfoScreen.dart';
-import 'package:diz/widgets/formulario/mail.dart';
-import 'package:diz/widgets/formulario/phoneNumber.dart';
 import 'package:diz/widgets/formulario/street.dart';
 import 'package:diz/widgets/hamburguesita/navDrawerMenuPrincipal.dart';
 import 'package:flutter/material.dart';
+import 'package:diz/services/registro.dart';
 
 class DeliveryInfoScreen extends StatefulWidget {
   @override
@@ -210,13 +209,11 @@ class _DeliveryInfoScreenState extends State<DeliveryInfoScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    buildMail(_mail),
-                    buildNumber(_number),
-                    buildStreet(_cp, 'Código Postal'),
-                    buildStreet(_street, 'Calle'),
-                    buildStreet(_calles, 'Calles contiguas'),
-                    buildStreet(_colonia, 'Colonia'),
-                    buildStreet(_ciudad, 'Ciudad'),
+                    buildStreet(_cp, 'Código Postal', cp),
+                    buildStreet(_street, 'Calle', calle),
+                    buildStreet(_calles, 'Calles contiguas', entreCalles),
+                    buildStreet(_colonia, 'Colonia', colonia),
+                    buildStreet(_ciudad, 'Ciudad', ciudad),
                     _buildEstado(),
                     SizedBox(height: 100),
                     RaisedButton(
@@ -229,7 +226,8 @@ class _DeliveryInfoScreenState extends State<DeliveryInfoScreen> {
                           return;
                         } else {
                           _formKey.currentState.save();
-                          print(_cp); print(_ciudad); print(_colonia);
+                          estado=_estado;
+                          print(estado+' estado');
                           Navigator.push(
                             context,
                             MaterialPageRoute(
